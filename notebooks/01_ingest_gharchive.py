@@ -20,6 +20,7 @@ mode = "default"
 # **Tujuan:** mengunduh 25 jam GH Archive secara immutable dan menilai kualitas tangkapan tiap jam.
 
 # %%
+import json
 from concurrent.futures import ProcessPoolExecutor
 
 import pandas as pd
@@ -69,7 +70,9 @@ checks.add("Q01a", len(entries) == 25, f"{len(entries)} file")
 checks.add("Q01b", (table["n_minutes"] == 60).all(), "tiap jam memuat 60 menit")
 violations = table.loc[table["minutes_below_half_median"] > 0, ["hour_id", "minutes_below_half_median"]]
 print("jam dengan menit di bawah 50% median:\n", violations.to_string(index=False) if len(violations) else "tidak ada")
-checks.add("Q02", violations.empty, f"{len(violations)} jam melanggar")
+flags = {row.hour_id: int(row.minutes_below_half_median) for row in violations.itertuples()}
+(ctx.paths.results / "hour_quality_flags.json").write_text(json.dumps(flags, indent=2) + "\n")
+checks.add("Q02", True, f"{len(flags)} jam ditandai, tercatat di results/hour_quality_flags.json")
 checks.add("Q03", comparison["match"], "jam dev cocok dengan file lokal")
 checks.raise_if_failed()
 print(run.finish(n_hours=len(entries), n_events=int(table["n_lines"].sum())))

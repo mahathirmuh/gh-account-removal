@@ -85,3 +85,14 @@ def test_pii_columns_and_secret_repr():
 def test_config_loads():
     ctx = load_context()
     assert len(ctx.all_hours()) == 25 and ctx.weeks_of("train") == ["w0", "w1"]
+
+
+def test_build_hour_drops_exact_duplicate_events(tmp_path):
+    from ghremoval.parse.events import build_hour
+    raw = event("WatchEvent", {"action": "started"})
+    path = tmp_path / "x.json.gz"
+    with gzip.open(path, "wb") as handle:
+        handle.write(json.dumps(raw).encode() + b"\n" + json.dumps(raw).encode() + b"\n")
+    stats = build_hour(path, tmp_path, KEY, "2024-04-09-3", "w0")
+    assert stats["n_events"] == 1 and stats["n_duplicates"] == 1
+    assert pl.read_parquet(tmp_path / "events/hour_id=2024-04-09-3/part.parquet").height == 1

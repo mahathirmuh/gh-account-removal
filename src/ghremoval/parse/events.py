@@ -75,12 +75,16 @@ def _write(rows, schema, path: Path) -> None:
 
 def build_hour(raw_path: Path, interim: Path, key: bytes, hour_id: str, week: str) -> dict:
     """Parse satu jam lalu tulis tiga tabel interim. Mengembalikan statistik jam itu."""
-    events, commits, actors, cache = [], [], {}, {}
-    bad = truncated = 0
+    events, commits, actors, cache, seen = [], [], {}, {}, set()
+    bad = truncated = duplicates = 0
     for raw in iter_events(raw_path):
         if raw is None:
             bad += 1
             continue
+        if raw["id"] in seen:
+            duplicates += 1
+            continue
+        seen.add(raw["id"])
         event_row, commit_rows, actor_row = parse_event(raw, key, hour_id, week, cache)
         events.append(event_row)
         commits.extend(commit_rows)
@@ -90,4 +94,4 @@ def build_hour(raw_path: Path, interim: Path, key: bytes, hour_id: str, week: st
     _write(events, EVENT_SCHEMA, interim / f"events/hour_id={hour_id}/part.parquet")
     _write(commits, COMMIT_SCHEMA, interim / f"commit_msgs/hour_id={hour_id}/part.parquet")
     _write(list(actors.values()), ACTOR_SCHEMA, interim / f"actor_login_features/hour_id={hour_id}/part.parquet")
-    return {"hour_id": hour_id, "week": week, "n_events": len(events), "n_commits": len(commits), "n_actors": len(actors), "n_bad": bad, "n_push_truncated": truncated}
+    return {"hour_id": hour_id, "week": week, "n_events": len(events), "n_commits": len(commits), "n_actors": len(actors), "n_bad": bad, "n_duplicates": duplicates, "n_push_truncated": truncated}

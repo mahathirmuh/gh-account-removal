@@ -9,7 +9,7 @@ Implementasikan di `src/ghremoval/quality.py` dan panggil di sel **Ringkasan & c
 | Q01 | nb01 | 25 file ada, sha256 tercatat, tiap jam memuat tepat 60 menit berbeda |
 | Q02 | nb01 | Tiap menit punya minimal 50% median hitungan menit jam itu; pelanggaran dilaporkan per jam |
 | Q03 | nb01 | Jam dev dari `.json.gz` memiliki jumlah baris dan rentang waktu yang sama dengan file lokal |
-| Q04 | nb02 | `event_id` unik per jam; `second_of_hour` di [0, 3599]; `created_at` berada di jam yang benar |
+| Q04 | nb02 | `event_id` unik per jam setelah duplikat identik dibuang; `second_of_hour` di [0, 3599]; `created_at` berada di jam yang benar |
 | Q05 | nb02 | Tidak ada kolom login, email, nama repo, atau teks commit mentah di tabel interim |
 | Q06 | nb03 | `account_hour` unik pada `(actor_id, hour_id)`; akun `[bot]` tidak masuk kohort |
 | Q07 | nb03 | Tiap akun hanya satu baris `is_first_in_period = true` per himpunan |
