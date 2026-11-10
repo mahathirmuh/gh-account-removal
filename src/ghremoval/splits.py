@@ -40,11 +40,14 @@ def artifact_groups(n_accounts: int, links: list[np.ndarray]) -> np.ndarray:
 
 
 def artifact_links(frame: pl.DataFrame, interim_events: pl.LazyFrame, interim_commits: pl.LazyFrame, max_accounts: int) -> list[np.ndarray]:
-    """Akun dalam `frame` yang berbagi repo atau pesan commit, untuk artefak yang dipakai 2 sampai `max_accounts` akun."""
+    """Akun dalam `frame` yang berbagi repo atau pesan commit pada jam yang sama, untuk artefak yang dipakai 2 sampai `max_accounts` akun.
+
+    Tautan dibatasi per jam supaya komponen tidak merantai antarjam menjadi satu grup raksasa.
+    """
     index = pl.DataFrame({"actor_id": frame["actor_id"], "hour_id": frame["hour_id"], "idx": np.arange(frame.height)}).lazy()
     links: list[np.ndarray] = []
     for source, key in ((interim_events.select("actor_id", "hour_id", "repo_id"), "repo_id"), (interim_commits.select("actor_id", "hour_id", "msg_hash"), "msg_hash")):
-        grouped = (source.join(index, on=["actor_id", "hour_id"], how="inner").select(key, "idx").unique().group_by(key).agg(pl.col("idx"), pl.len().alias("size")).filter(pl.col("size").is_between(2, max_accounts)).collect())
+        grouped = (source.join(index, on=["actor_id", "hour_id"], how="inner").select("hour_id", key, "idx").unique().group_by("hour_id", key).agg(pl.col("idx"), pl.len().alias("size")).filter(pl.col("size").is_between(2, max_accounts)).collect())
         links += [np.array(members, dtype=np.int64) for members in grouped["idx"].to_list()]
     return links
 

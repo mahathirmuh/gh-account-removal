@@ -38,7 +38,7 @@ Dijalankan pada kemunculan pertama akun di `w0–w2`, tanpa menyentuh `w3`.
 | Lengan | Grup |
 | --- | --- |
 | `A1_random` | Tiap akun satu grup, stratifikasi pada `s` |
-| `A2_artifact` | Akun yang berbagi repo atau `msg_hash` yang dipakai 2 sampai `artifact_max_accounts` akun |
+| `A2_artifact` | Akun yang berbagi repo atau `msg_hash` pada jam yang sama, untuk artefak yang dipakai 2 sampai `artifact_max_accounts` akun |
 | `A3_idblock_{W}` | `actor_id // W`, untuk tiap `W` di `id_block_widths` |
 | `A3s_signature` | `(n_events, n_repos, n_active_minutes)` sama, untuk `n_events ≥ signature_min_events`; lainnya tunggal |
 

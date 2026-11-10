@@ -94,3 +94,12 @@ def test_draw_sample_is_deterministic_and_balanced():
     a = draw_sample(frame, score, 10, 10, 3)
     b = draw_sample(frame, score, 10, 10, 3)
     assert a[0].equals(b[0]) and a[1]["score_group"].value_counts().height == 2
+
+
+def test_elkan_noto_and_hiding_use_independent_random_streams():
+    rng = np.random.default_rng(5)
+    X = rng.normal(size=(3000, 3))
+    s = (X[:, 0] > 0).astype(int)
+    hidden = hide_positives(s, X[:, [1]], 0.5, 11)
+    _, c = elkan_noto_fit(X, (s & ~hidden).astype(int), 11)
+    assert not np.isnan(c)

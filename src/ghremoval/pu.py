@@ -25,7 +25,7 @@ def elkan_noto_fit(X: np.ndarray, s: np.ndarray, seed: int, holdout_fraction: fl
 
     Mengembalikan (model, c). Skor peringkat sama dengan skor model; `c` hanya mengoreksi skala.
     """
-    rng = np.random.default_rng(seed)
+    rng = np.random.default_rng([seed, 1])  # aliran terpisah dari hide_positives
     held = rng.random(len(s)) < holdout_fraction
     model = _clf(X[~held], s[~held], seed)
     positives = held & (s == 1)
@@ -35,7 +35,7 @@ def elkan_noto_fit(X: np.ndarray, s: np.ndarray, seed: int, holdout_fraction: fl
 
 def pu_bagging_fit(X: np.ndarray, s: np.ndarray, seed: int, n_bags: int = 15) -> list:
     """PU bagging: positif melawan sampel acak unlabeled sebesar positif."""
-    rng = np.random.default_rng(seed)
+    rng = np.random.default_rng([seed, 2])
     positives, unlabeled = np.flatnonzero(s == 1), np.flatnonzero(s == 0)
     models = []
     for bag in range(n_bags):
@@ -67,7 +67,7 @@ def sar_em_fit(X: np.ndarray, s: np.ndarray, propensity_features: np.ndarray, se
 
 def hide_positives(s: np.ndarray, propensity_features: np.ndarray, target_hidden: float, seed: int) -> np.ndarray:
     """Mask positif yang disembunyikan. Peluang disembunyikan naik dengan atribut propensity, rata-rata `target_hidden`."""
-    rng = np.random.default_rng(seed)
+    rng = np.random.default_rng([seed, 3])
     features = propensity_features - propensity_features.mean(axis=0)
     span = np.abs(features).max(axis=0) + 1e-9
     logits = (features / span).sum(axis=1)
