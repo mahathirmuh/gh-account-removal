@@ -1,0 +1,7 @@
+[jupytext] Reading /home/s2_giga/mahathir/trial/dm-git/notebooks/12_latency_and_adaptive_policy.py in format py
+[jupytext] Writing /home/s2_giga/mahathir/trial/dm-git/notebooks/12_latency_and_adaptive_policy.ipynb (destination file replaced [use --update to preserve cell outputs and ids])
+Input Notebook:  /home/s2_giga/mahathir/trial/dm-git/notebooks/12_latency_and_adaptive_policy.ipynb
+Output Notebook: /home/s2_giga/mahathir/trial/dm-git/notebooks/12_latency_and_adaptive_policy.ipynb
+Working directory: /home/s2_giga/mahathir/trial/dm-git
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+Executing notebook with kernel: python3

@@ -1,0 +1,133 @@
+
+=== Notebook 09  ===
+[jupytext] Reading /home/s2_giga/mahathir/trial/dm-git/notebooks/09_split_audit.py in format py
+[jupytext] Writing /home/s2_giga/mahathir/trial/dm-git/notebooks/09_split_audit.ipynb
+Input Notebook:  /home/s2_giga/mahathir/trial/dm-git/notebooks/09_split_audit.ipynb
+Output Notebook: /home/s2_giga/mahathir/trial/dm-git/notebooks/09_split_audit.ipynb
+Working directory: /home/s2_giga/mahathir/trial/dm-git
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+Executing notebook with kernel: python3
+
+=== Notebook 10  ===
+[jupytext] Reading /home/s2_giga/mahathir/trial/dm-git/notebooks/10_models_and_controls.py in format py
+[jupytext] Writing /home/s2_giga/mahathir/trial/dm-git/notebooks/10_models_and_controls.ipynb
+Input Notebook:  /home/s2_giga/mahathir/trial/dm-git/notebooks/10_models_and_controls.ipynb
+Output Notebook: /home/s2_giga/mahathir/trial/dm-git/notebooks/10_models_and_controls.ipynb
+Working directory: /home/s2_giga/mahathir/trial/dm-git
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+Executing notebook with kernel: python3
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/home/s2_giga/mahathir/trial/dm-git/.venv/lib/python3.12/site-packages/papermill/__main__.py", line 4, in <module>
+    papermill()
+  File "/home/s2_giga/mahathir/trial/dm-git/.venv/lib/python3.12/site-packages/click/core.py", line 1653, in __call__
+    return self.main(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2_giga/mahathir/trial/dm-git/.venv/lib/python3.12/site-packages/click/core.py", line 1560, in main
+    rv = self.invoke(ctx)
+         ^^^^^^^^^^^^^^^^
+  File "/home/s2_giga/mahathir/trial/dm-git/.venv/lib/python3.12/site-packages/click/core.py", line 1414, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2_giga/mahathir/trial/dm-git/.venv/lib/python3.12/site-packages/click/core.py", line 911, in invoke
+    return callback(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2_giga/mahathir/trial/dm-git/.venv/lib/python3.12/site-packages/click/decorators.py", line 34, in new_func
+    return f(get_current_context(), *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/s2_giga/mahathir/trial/dm-git/.venv/lib/python3.12/site-packages/papermill/cli.py", line 235, in papermill
+    execute_notebook(
+  File "/home/s2_giga/mahathir/trial/dm-git/.venv/lib/python3.12/site-packages/papermill/execute.py", line 131, in execute_notebook
+    raise_for_execution_errors(nb, output_path)
+  File "/home/s2_giga/mahathir/trial/dm-git/.venv/lib/python3.12/site-packages/papermill/execute.py", line 251, in raise_for_execution_errors
+    raise error
+papermill.exceptions.PapermillExecutionError: 
+---------------------------------------------------------------------------
+Exception encountered at "In [4]":
+---------------------------------------------------------------------------
+MlflowException                           Traceback (most recent call last)
+Cell In[4], line 6
+      2 X_test, y_test = xy(data.test, "M_behav")
+      3 es = time_holdback(data.train, order)
+      4 tune_mask = arm_mask(data.train, data.test, "F2_forward_new_accounts", ctx) & (data.test["stratum"].to_numpy() == "5-19")
+      5 mlflow.set_tracking_uri(f"file:{ctx.paths.root}/mlruns")
+----> 6 mlflow.set_experiment("nb10_tuning")
+      7 storage = ctx.paths.results / "optuna"
+      8 studies = []
+      9 for family in ("xgb", "lr", "mlp"):
+
+File ~/mahathir/trial/dm-git/.venv/lib/python3.12/site-packages/mlflow/tracking/fluent.py:202, in set_experiment(experiment_name, experiment_id, trace_location)
+    194 if (experiment_name is not None and experiment_id is not None) or (
+    195     experiment_name is None and experiment_id is None
+    196 ):
+    197     raise MlflowException(
+    198         message="Must specify exactly one of: `experiment_id` or `experiment_name`.",
+    199         error_code=INVALID_PARAMETER_VALUE,
+    200     )
+--> 202 client = TrackingServiceClient(_resolve_tracking_uri())
+    204 is_newly_created = False
+    206 with _experiment_lock:
+
+File ~/mahathir/trial/dm-git/.venv/lib/python3.12/site-packages/mlflow/tracking/_tracking_service/client.py:98, in TrackingServiceClient.__init__(self, tracking_uri)
+     93 self.tracking_uri = tracking_uri
+     94 # NB: Fetch the tracking store (`self.store`) upon client initialization to ensure that
+     95 # the tracking URI is valid and the store can be properly resolved. We define `store` as a
+     96 # property method to ensure that the client is serializable, even if the store is not
+     97 # self.store
+---> 98 self.store
+
+File ~/mahathir/trial/dm-git/.venv/lib/python3.12/site-packages/mlflow/tracking/_tracking_service/client.py:102, in TrackingServiceClient.store(self)
+    100 @property
+    101 def store(self):
+--> 102     return utils._get_store(self.tracking_uri)
+
+File ~/mahathir/trial/dm-git/.venv/lib/python3.12/site-packages/mlflow/tracking/_tracking_service/utils.py:266, in _get_store(store_uri, artifact_uri)
+    265 def _get_store(store_uri=None, artifact_uri=None):
+--> 266     return _tracking_store_registry.get_store(store_uri, artifact_uri)
+
+File ~/mahathir/trial/dm-git/.venv/lib/python3.12/site-packages/mlflow/tracking/_tracking_service/registry.py:45, in TrackingStoreRegistry.get_store(self, store_uri, artifact_uri)
+     42 from mlflow.tracking._tracking_service import utils
+     44 resolved_store_uri = utils._resolve_tracking_uri(store_uri)
+---> 45 return self._get_store_with_resolved_uri(resolved_store_uri, artifact_uri)
+
+File ~/mahathir/trial/dm-git/.venv/lib/python3.12/site-packages/mlflow/tracking/_tracking_service/registry.py:56, in TrackingStoreRegistry._get_store_with_resolved_uri(self, resolved_store_uri, artifact_uri)
+     54 with _building_store_lock:
+     55     builder = self.get_store_builder(resolved_store_uri)
+---> 56     return builder(store_uri=resolved_store_uri, artifact_uri=artifact_uri)
+
+File ~/mahathir/trial/dm-git/.venv/lib/python3.12/site-packages/mlflow/tracking/_tracking_service/utils.py:180, in _get_file_store(store_uri, **_)
+    177 def _get_file_store(store_uri, **_):
+    178     from mlflow.store.tracking.file_store import FileStore
+--> 180     return FileStore(store_uri, store_uri)
+
+File ~/mahathir/trial/dm-git/.venv/lib/python3.12/site-packages/mlflow/store/tracking/file_store.py:254, in FileStore.__init__(self, root_directory, artifact_root_uri)
+    252 super().__init__()
+    253 if not MLFLOW_ALLOW_FILE_STORE.get():
+--> 254     raise MlflowException(
+    255         "The filesystem tracking backend (e.g., './mlruns') is in maintenance mode "
+    256         "and will not receive further updates. Please migrate to a "
+    257         "database backend (e.g., 'sqlite:///mlflow.db') to access the latest MLflow "
+    258         "features. The `mlflow migrate-filestore` tool migrates your existing data "
+    259         "losslessly. See "
+    260         "https://mlflow.org/docs/latest/self-hosting/migrate-from-file-store "
+    261         "for migration guidance. If the filesystem backend is required for your "
+    262         "workflow, set `MLFLOW_ALLOW_FILE_STORE=true` to opt out of this exception.",
+    263         error_code=INVALID_PARAMETER_VALUE,
+    264     )
+    265 self.root_directory = local_file_uri_to_path(root_directory or _default_root_dir())
+    266 if not artifact_root_uri:
+
+MlflowException: The filesystem tracking backend (e.g., './mlruns') is in maintenance mode and will not receive further updates. Please migrate to a database backend (e.g., 'sqlite:///mlflow.db') to access the latest MLflow features. The `mlflow migrate-filestore` tool migrates your existing data losslessly. See https://mlflow.org/docs/latest/self-hosting/migrate-from-file-store for migration guidance. If the filesystem backend is required for your workflow, set `MLFLOW_ALLOW_FILE_STORE=true` to opt out of this exception.
+
+Traceback (most recent call last):
+  File "/home/s2_giga/mahathir/trial/dm-git/scripts/run_all.py", line 45, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/s2_giga/mahathir/trial/dm-git/scripts/run_all.py", line 39, in main
+    run(*step)
+  File "/home/s2_giga/mahathir/trial/dm-git/scripts/run_notebook.py", line 30, in run
+    subprocess.run(command, check=True, cwd=ROOT)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/s2_giga/mahathir/trial/dm-git/.venv/bin/python', '-m', 'papermill', '/home/s2_giga/mahathir/trial/dm-git/notebooks/10_models_and_controls.ipynb', '/home/s2_giga/mahathir/trial/dm-git/notebooks/10_models_and_controls.ipynb', '--cwd', '/home/s2_giga/mahathir/trial/dm-git', '--kernel', 'python3', '--no-progress-bar', '-p', 'config_path', 'config/params.yaml']' returned non-zero exit status 1.

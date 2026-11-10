@@ -1,0 +1,19 @@
+
+=== Notebook 15  ===
+[jupytext] Reading /home/s2_giga/mahathir/trial/dm-git/notebooks/15_holdout_evaluation.py in format py
+[jupytext] Writing /home/s2_giga/mahathir/trial/dm-git/notebooks/15_holdout_evaluation.ipynb
+Input Notebook:  /home/s2_giga/mahathir/trial/dm-git/notebooks/15_holdout_evaluation.ipynb
+Output Notebook: /home/s2_giga/mahathir/trial/dm-git/notebooks/15_holdout_evaluation.ipynb
+Working directory: /home/s2_giga/mahathir/trial/dm-git
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+Executing notebook with kernel: python3
+
+=== Notebook 16  ===
+[jupytext] Reading /home/s2_giga/mahathir/trial/dm-git/notebooks/16_paper_outputs.py in format py
+[jupytext] Writing /home/s2_giga/mahathir/trial/dm-git/notebooks/16_paper_outputs.ipynb
+Input Notebook:  /home/s2_giga/mahathir/trial/dm-git/notebooks/16_paper_outputs.ipynb
+Output Notebook: /home/s2_giga/mahathir/trial/dm-git/notebooks/16_paper_outputs.ipynb
+Working directory: /home/s2_giga/mahathir/trial/dm-git
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+Executing notebook with kernel: python3
+Pipeline selesai.

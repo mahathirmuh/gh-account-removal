@@ -1,0 +1,46 @@
+
+=== Notebook 10  ===
+[jupytext] Reading /home/s2_giga/mahathir/trial/dm-git/notebooks/10_models_and_controls.py in format py
+[jupytext] Writing /home/s2_giga/mahathir/trial/dm-git/notebooks/10_models_and_controls.ipynb (destination file replaced [use --update to preserve cell outputs and ids])
+Input Notebook:  /home/s2_giga/mahathir/trial/dm-git/notebooks/10_models_and_controls.ipynb
+Output Notebook: /home/s2_giga/mahathir/trial/dm-git/notebooks/10_models_and_controls.ipynb
+Working directory: /home/s2_giga/mahathir/trial/dm-git
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+Executing notebook with kernel: python3
+
+=== Notebook 11  ===
+[jupytext] Reading /home/s2_giga/mahathir/trial/dm-git/notebooks/11_pu_analysis.py in format py
+[jupytext] Writing /home/s2_giga/mahathir/trial/dm-git/notebooks/11_pu_analysis.ipynb
+Input Notebook:  /home/s2_giga/mahathir/trial/dm-git/notebooks/11_pu_analysis.ipynb
+Output Notebook: /home/s2_giga/mahathir/trial/dm-git/notebooks/11_pu_analysis.ipynb
+Working directory: /home/s2_giga/mahathir/trial/dm-git
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+Executing notebook with kernel: python3
+
+=== Notebook 12  ===
+[jupytext] Reading /home/s2_giga/mahathir/trial/dm-git/notebooks/12_latency_and_adaptive_policy.py in format py
+[jupytext] Writing /home/s2_giga/mahathir/trial/dm-git/notebooks/12_latency_and_adaptive_policy.ipynb
+Input Notebook:  /home/s2_giga/mahathir/trial/dm-git/notebooks/12_latency_and_adaptive_policy.ipynb
+Output Notebook: /home/s2_giga/mahathir/trial/dm-git/notebooks/12_latency_and_adaptive_policy.ipynb
+Working directory: /home/s2_giga/mahathir/trial/dm-git
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+Executing notebook with kernel: python3
+
+=== Notebook 13  ===
+[jupytext] Reading /home/s2_giga/mahathir/trial/dm-git/notebooks/13_coordination_ablation.py in format py
+[jupytext] Writing /home/s2_giga/mahathir/trial/dm-git/notebooks/13_coordination_ablation.ipynb
+Input Notebook:  /home/s2_giga/mahathir/trial/dm-git/notebooks/13_coordination_ablation.ipynb
+Output Notebook: /home/s2_giga/mahathir/trial/dm-git/notebooks/13_coordination_ablation.ipynb
+Working directory: /home/s2_giga/mahathir/trial/dm-git
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+Executing notebook with kernel: python3
+
+=== Notebook 14 sample ===
+[jupytext] Reading /home/s2_giga/mahathir/trial/dm-git/notebooks/14_manual_audit.py in format py
+[jupytext] Writing /home/s2_giga/mahathir/trial/dm-git/notebooks/14_manual_audit.ipynb
+Input Notebook:  /home/s2_giga/mahathir/trial/dm-git/notebooks/14_manual_audit.ipynb
+Output Notebook: /home/s2_giga/mahathir/trial/dm-git/notebooks/14_manual_audit.ipynb
+Working directory: /home/s2_giga/mahathir/trial/dm-git
+[IPKernelApp] WARNING | Kernel is running over TCP without encryption. All communication (including code and outputs) is sent in plain text and is susceptible to eavesdropping. Use IPC transport or launch with kernel manager-provisioned CurveZMQ keys to enable transport encryption.
+Executing notebook with kernel: python3
+Berhenti di Gerbang D: belum lewat.
