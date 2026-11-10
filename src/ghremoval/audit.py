@@ -23,6 +23,12 @@ def cohen_kappa(a: list[str], b: list[str]) -> float:
     return (observed - expected) / (1 - expected) if expected < 1 else float("nan")
 
 
+def attach_pseudo(ctx: Context, frame: pl.DataFrame) -> pl.DataFrame:
+    """Menambahkan pseudonim akun, dengan urutan baris tetap."""
+    dim = pl.read_parquet(ctx.paths.processed / "account_dim.parquet", columns=["actor_id", "actor_pseudo"])
+    return frame.join(dim, on="actor_id", how="left", maintain_order="left")
+
+
 def draw_sample(frame: pl.DataFrame, score: np.ndarray, n_top: int, n_low: int, seed: int) -> tuple[pl.DataFrame, pl.DataFrame]:
     """Sampel skor tinggi dan skor rendah dengan distribusi stratum sama. Mengembalikan (sampel acak, kunci kelompok)."""
     rng = np.random.default_rng(seed)

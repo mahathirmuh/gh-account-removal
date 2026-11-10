@@ -115,6 +115,8 @@ dm-git/
 
 Di setiap gerbang: **berhenti**, tulis ringkasan berisi apa yang perlu dilakukan pengguna, path file yang harus diisi, dan format kolomnya. Lanjut hanya setelah pengguna menjawab.
 
+**Delegasi 2026-11-10.** Pengguna meminta Claude Code mengerjakan seluruh pipeline, sehingga keputusan Gerbang A, B, dan D diambil oleh Claude Code dan dicatat beserta alasannya di `results/gates.json`. Gerbang C tetap membutuhkan dua anotator manusia dan tidak boleh diisi oleh Claude Code.
+
 ## Konvensi
 
 - Nama kolom dan identifier: snake_case, bahasa Inggris. Narasi markdown di notebook: Bahasa Indonesia. Label figur dan tabel: bahasa Inggris.

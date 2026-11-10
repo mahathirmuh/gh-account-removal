@@ -28,7 +28,7 @@ import json
 import polars as pl
 
 from ghremoval.analysis import hour_order, seeds
-from ghremoval.audit import cohen_kappa, draw_sample, render_summaries, write_summaries
+from ghremoval.audit import attach_pseudo, cohen_kappa, draw_sample, render_summaries, write_summaries
 from ghremoval.config import load_context
 from ghremoval.models.fit import fit_predict, load_stage
 from ghremoval.quality import Checks, wilson
@@ -48,7 +48,7 @@ if mode == "sample":
     data = load_stage(ctx, "dev", 60)
     assert set(data.test["week"].unique()) == {"w2"}
     score = fit_predict("xgb", best["xgb"], "M_behav", data.train, [data.test], hour_order(ctx), seeds(ctx))[0]
-    sample, key = draw_sample(data.test, score, cfg["audit_sample_top"], cfg["audit_sample_low"], ctx.p.project["seed"])
+    sample, key = draw_sample(attach_pseudo(ctx, data.test), score, cfg["audit_sample_top"], cfg["audit_sample_low"], ctx.p.project["seed"])
     write_summaries(render_summaries(ctx, sample, load_hmac_key(ctx).reveal().encode()), folder / "audit_sample.jsonl")
     sample.select("audit_id", "actor_pseudo", "stratum").write_csv(folder / "audit_sample.csv")
     key.write_csv(folder / "audit_key_do_not_open.csv")
