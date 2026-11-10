@@ -1,0 +1,44 @@
+{
+  "id_age": {
+    "n": 5000,
+    "spearman": 0.9995107812684194,
+    "monotone_deciles": true
+  },
+  "web_crosscheck": {
+    "api_gone": {
+      "404": 192,
+      "200": 8
+    },
+    "api_present": {
+      "200": 489,
+      "504": 11
+    }
+  },
+  "ghost_gone": {
+    "accounts": {
+      "object_unavailable": 269,
+      "ghost": 237,
+      "other_author": 12
+    },
+    "objects": {
+      "http_404": 413,
+      "ghost": 324,
+      "other_author": 25,
+      "http_403": 3,
+      "http_410": 4
+    },
+    "n_accounts": 518
+  },
+  "ghost_control": {
+    "accounts": {
+      "attributed": 140,
+      "object_unavailable": 10
+    },
+    "objects": {
+      "attributed": 201,
+      "http_404": 20
+    },
+    "n_accounts": 150
+  },
+  "share_gone_with_objects": 0.04672559985567382
+}

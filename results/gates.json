@@ -1,0 +1,14 @@
+{
+  "A": {
+    "decided_by": "claude-code (delegasi pengguna 2026-11-10)",
+    "decision": "lanjut",
+    "rationale": "Label layak dipakai sebagai 'akun hilang', bukan sebagai ukuran pelanggaran. Snapshot 885.634 akun tanpa error; verifikasi REST 2.000/2.000 sampel gone menghasilkan 404. Cek silang web: API hilang 192/200 web 404 dan 8/200 web 200, konsisten dengan login lama yang dipakai ulang karena label berbasis ID numerik (belum diverifikasi per akun). API ada 489/500 web 200, 11/500 web 504, dan 0 web 404, jadi pola API 200 + web 404 di bawah ambang 1%. Respons 504 tidak muncul pada 200 akun hilang. ID terhadap createdAt: Spearman 0,9995, monoton per desil pada 5.000 akun. Probe ghost: 518 akun hilang punya objek di repo orang lain (4,7% dari akun hilang dev dan train): 237 ghost, 269 objek tidak tersedia, 12 objek milik penulis lain; kontrol 150 akun ada: 140 teratribusi, 10 tidak tersedia, 0 ghost. Label mencampur penghapusan akun dan penghapusan konten, sehingga istilah 'akun hilang' wajib dipertahankan. Tingkat hilang jam dev sama persis dengan pilot (5-19: 185/7.576; 20+: 334/858). Catatan: jam dev tidak mewakili stratum 20+. Tingkat hilangnya 38,9% dibanding 7,4% pada train, dan jam dev memuat 858 akun 20+ dibanding 537-631 pada jam 15 UTC hari kerja di w0-w3, sehingga angka pilot stratum 20+ tidak boleh dipakai sebagai ekspektasi. Stratum utama 5-19 sebanding (2,4% dibanding 2,8%).",
+    "recorded_at_utc": "2026-11-10T11:31:26+00:00"
+  },
+  "B": {
+    "decided_by": "claude-code (delegasi pengguna 2026-11-10)",
+    "decision": "lanjut",
+    "rationale": "Pipeline mereproduksi angka pilot pada jam dev: kelima baris AP berada dalam toleransi 0,03 (tab_dev_replication), dan label jam dev sama persis dengan pilot (519 hilang dari 8.434 akun kohort tetap). Rancangan dibekukan pada config/params.yaml dan tag prereg-v1. Tag ini adalah tag git lokal yang dibuat Claude Code atas delegasi pengguna, bukan pendaftaran pada layanan publik, sehingga paper menyebutnya rancangan yang dibekukan sebelum analisis, bukan pra-registrasi. Stratum kunci 5-19 tidak berubah. Jam dev tidak mewakili stratum 20+ (lihat Gerbang A), jadi angka pilot stratum itu bukan ekspektasi.",
+    "recorded_at_utc": "2026-11-10T11:35:46+00:00"
+  }
+}

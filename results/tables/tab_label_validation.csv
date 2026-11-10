@@ -1,0 +1,7 @@
+check,value
+spearman_id_created,0.9995107812684194
+monotone_deciles,1.0
+web_api_gone_404,192.0
+web_api_gone_200,8.0
+web_api_present_200,489.0
+web_api_present_504,11.0
