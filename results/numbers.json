@@ -1,7 +1,13 @@
 {
+  "aurt_delta_h4a": 0.0582010582010582,
+  "delta_ap_h1a": 0.17346627039468782,
+  "delta_ap_h5": 0.10728314756761514,
   "n_accounts_study": 847681,
   "n_events_study": 5019698,
   "n_fixed_cohort": 159209,
+  "positives_f3_5_19": 471,
   "primary_id_block_width": 20000,
-  "ratio_h2a": 1.1759642207634509
+  "ratio_h2a": 1.1759642207634509,
+  "snapshot_date": "2026-11-10",
+  "within_cell_auc_h1b": 0.7355678510858691
 }

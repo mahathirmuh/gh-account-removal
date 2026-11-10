@@ -1,0 +1,16 @@
+\begin{table}
+\caption{Coordination ablation on holdout (observed label)}
+\label{tab:tab_coord_ablation_final}
+\begin{tabular}{llrrrrrrrrrrrrrrr}
+\toprule
+model & arm & ap\_all & ap\_5-19 & ap\_20+ & base\_all & base\_5-19 & base\_20+ & n & n\_pos & p\_at\_50 & r\_at\_50 & p\_at\_100 & r\_at\_100 & p\_at\_500 & r\_at\_500 & n\_pos\_in\_blocks \\
+\midrule
+M\_behav & F2\_forward\_new\_accounts & 0.3030 & 0.2751 & 0.5461 & 0.0238 & 0.0225 & 0.0552 & 28896 & 687 & 0.9600 & 0.0699 & 0.9300 & 0.1354 & 0.3700 & 0.2693 & 687 \\
+M\_proxy & F2\_forward\_new\_accounts & 0.3907 & 0.3665 & 0.6141 & 0.0238 & 0.0225 & 0.0552 & 28896 & 687 & 1.0000 & 0.0728 & 0.9800 & 0.1426 & 0.4820 & 0.3508 & 687 \\
+M\_coord & F2\_forward\_new\_accounts & 0.3907 & 0.3679 & 0.6032 & 0.0238 & 0.0225 & 0.0552 & 28896 & 687 & 1.0000 & 0.0728 & 0.9900 & 0.1441 & 0.4720 & 0.3435 & 687 \\
+M\_behav & F3\_forward\_batch\_excluded & 0.2670 & 0.2564 & 0.3643 & 0.0208 & 0.0202 & 0.0354 & 24249 & 504 & 0.9600 & 0.0952 & 0.7100 & 0.1409 & 0.2680 & 0.2659 & 504 \\
+M\_proxy & F3\_forward\_batch\_excluded & 0.3742 & 0.3624 & 0.5276 & 0.0208 & 0.0202 & 0.0354 & 24249 & 504 & 0.9800 & 0.0972 & 0.8500 & 0.1687 & 0.3720 & 0.3690 & 504 \\
+M\_coord & F3\_forward\_batch\_excluded & 0.3741 & 0.3637 & 0.5058 & 0.0208 & 0.0202 & 0.0354 & 24249 & 504 & 1.0000 & 0.0992 & 0.8800 & 0.1746 & 0.3660 & 0.3631 & 504 \\
+\bottomrule
+\end{tabular}
+\end{table}

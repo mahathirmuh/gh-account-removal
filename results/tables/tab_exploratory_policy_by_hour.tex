@@ -1,0 +1,23 @@
+\begin{table}
+\caption{Exploratory: adaptive policy against selected fixed window by holdout hour (observed label)}
+\label{tab:tab_exploratory_policy_by_hour}
+\begin{tabular}{llrrrrrrr}
+\toprule
+view & label & n & n\_pos & n\_flagged\_adaptive & n\_tp\_adaptive & aurt\_adaptive & aurt\_best\_fixed & delta \\
+\midrule
+all & F3\_fixed\_cohort & 24249 & 504 & 83 & 58 & 0.0675 & 0.0238 & 0.0437 \\
+per\_hour & 2024-04-30-15 & 6337 & 134 & 46 & 40 & 0.2070 & 0.0672 & 0.1398 \\
+without\_hour & 2024-04-30-15 & 17912 & 370 & 37 & 18 & 0.0169 & 0.0081 & 0.0088 \\
+per\_hour & 2024-04-30-3 & 3892 & 74 & 5 & 2 & 0.0054 & 0.0000 & 0.0054 \\
+without\_hour & 2024-04-30-3 & 20357 & 430 & 78 & 56 & 0.0781 & 0.0279 & 0.0502 \\
+per\_hour & 2024-05-02-15 & 5344 & 73 & 10 & 6 & 0.0164 & 0.0000 & 0.0164 \\
+without\_hour & 2024-05-02-15 & 18905 & 431 & 73 & 52 & 0.0761 & 0.0278 & 0.0483 \\
+per\_hour & 2024-05-02-3 & 2854 & 54 & 4 & 1 & 0.0111 & 0.0111 & 0.0000 \\
+without\_hour & 2024-05-02-3 & 21395 & 450 & 79 & 57 & 0.0742 & 0.0253 & 0.0489 \\
+per\_hour & 2024-05-04-15 & 3747 & 122 & 12 & 5 & 0.0175 & 0.0098 & 0.0077 \\
+without\_hour & 2024-05-04-15 & 20502 & 382 & 71 & 53 & 0.0834 & 0.0283 & 0.0551 \\
+per\_hour & 2024-05-04-3 & 2075 & 47 & 6 & 4 & 0.0411 & 0.0255 & 0.0156 \\
+without\_hour & 2024-05-04-3 & 22174 & 457 & 77 & 54 & 0.0702 & 0.0236 & 0.0465 \\
+\bottomrule
+\end{tabular}
+\end{table}

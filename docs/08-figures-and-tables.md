@@ -20,6 +20,7 @@ Versi holdout dari nb15 memakai akhiran `_final`, misalnya `tab_policy_final`. F
 | `tab_policy_sensitivity` | Horizon lain dan precision teramati yang disamakan, eksploratif | nb12, nb15 |
 | `tab_f3_sensitivity_final` | Lengan F3 tanpa blok ID berisi akun train apa pun, eksploratif | nb15 |
 | `tab_followup_by_week_final` | Tingkat hilang per minggu dan stratum | nb15 |
+| `tab_exploratory_coordination_final`, `tab_exploratory_shared_by_week`, `tab_exploratory_policy_by_hour` | Rincian per jam setelah holdout, eksploratif | `scripts/exploratory_coordination_final.py` |
 | `tab_coord_ablation` | `M_behav`, `M_proxy`, `M_coord` | nb13, nb15 |
 | `tab_audit_results` | Kategori audit per kelompok, κ | nb14 |
 | `tab_holdout_summary` | Keputusan H1a–H5 | nb15 |

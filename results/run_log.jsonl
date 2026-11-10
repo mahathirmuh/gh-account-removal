@@ -16,3 +16,5 @@
 {"notebook": "13_coordination_ablation", "finished_at_utc": "2026-11-10T12:00:40+00:00", "git_commit": "f04dbd3", "duration_seconds": 94.2, "counts": {"n_test": 22095}}
 {"notebook": "14_manual_audit_sample", "finished_at_utc": "2026-11-10T12:01:05+00:00", "git_commit": "f04dbd3", "duration_seconds": 22.5, "counts": {"mode": "sample"}}
 {"notebook": "12_latency_and_adaptive_policy", "finished_at_utc": "2026-11-10T12:08:41+00:00", "git_commit": "f04dbd3", "duration_seconds": 115.0, "counts": {"n_settings": 4}}
+{"notebook": "15_holdout_evaluation", "finished_at_utc": "2026-11-10T12:22:38+00:00", "git_commit": "dde2836", "duration_seconds": 346.7, "counts": {"n_test": 32582, "n_pos_test": 785}}
+{"notebook": "16_paper_outputs", "finished_at_utc": "2026-11-10T12:22:41+00:00", "git_commit": "dde2836", "duration_seconds": 0.1, "counts": {"n_outputs": 36}}

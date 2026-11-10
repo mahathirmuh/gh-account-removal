@@ -1,0 +1,34 @@
+{
+  "fixed|F2_forward_new_accounts": {
+    "best_fixed_window": 30,
+    "delta": 0.06773410965550704,
+    "low": 0.029371891149870804,
+    "high": 0.11694112664810856,
+    "p_one_sided": 0.0,
+    "n_reps": 2000
+  },
+  "fixed|F3_forward_batch_excluded": {
+    "best_fixed_window": 30,
+    "delta": 0.0582010582010582,
+    "low": 0.013932370928744131,
+    "high": 0.12040132383067362,
+    "p_one_sided": 0.0,
+    "n_reps": 2000
+  },
+  "deployable|F2_forward_new_accounts": {
+    "best_fixed_window": 60,
+    "delta": 0.04370205394704281,
+    "low": 0.021878762133807364,
+    "high": 0.07453389830508472,
+    "p_one_sided": 0.0,
+    "n_reps": 2000
+  },
+  "deployable|F3_forward_batch_excluded": {
+    "best_fixed_window": 60,
+    "delta": 0.04258585858585859,
+    "low": 0.011788143716872226,
+    "high": 0.08609887036290947,
+    "p_one_sided": 0.0,
+    "n_reps": 2000
+  }
+}
