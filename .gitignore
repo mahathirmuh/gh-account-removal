@@ -5,6 +5,9 @@
 /mlruns/
 /results/optuna/
 
+# Konfigurasi lokal editor dan asisten
+/.claude/
+
 # Python / tooling
 __pycache__/
 *.pyc
