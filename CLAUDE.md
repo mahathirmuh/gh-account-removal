@@ -117,6 +117,8 @@ Di setiap gerbang: **berhenti**, tulis ringkasan berisi apa yang perlu dilakukan
 
 **Delegasi 2026-11-10.** Pengguna meminta Claude Code mengerjakan seluruh pipeline, sehingga keputusan Gerbang A, B, dan D diambil oleh Claude Code dan dicatat beserta alasannya di `results/gates.json`. Gerbang C tetap membutuhkan dua anotator manusia dan tidak boleh diisi oleh Claude Code.
 
+**Perubahan Gerbang C, 2026-11-10.** Atas permintaan pengguna, kalimat terakhir di atas dan larangan anotasi pada aturan emas 6 berubah khusus untuk audit manual: anotasi awal dikerjakan satu instance Claude yang tidak melihat skor, label, atau hasil, dan disimpan terpisah di `data/annotation/audit_annotator_LLM.csv`. Validasi tetap oleh manusia. Claude tidak boleh mengisi kolom validasi manusia, dan anotasi ini tidak boleh dilaporkan sebagai anotasi manusia. Penyimpangan ini tercatat di `docs/DEVIATIONS.md`.
+
 ## Konvensi
 
 - Nama kolom dan identifier: snake_case, bahasa Inggris. Narasi markdown di notebook: Bahasa Indonesia. Label figur dan tabel: bahasa Inggris.

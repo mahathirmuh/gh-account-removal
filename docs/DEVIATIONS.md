@@ -9,6 +9,7 @@ Diisi setelah tag `prereg-v1`. Satu entri per penyimpangan. Laporkan hasil denga
 | 2026-11-10 | Rancangan dibekukan dengan tag git lokal, bukan pendaftaran pada layanan publik | Tidak ada pendaftaran OSF sebelum model dilatih pada jam studi | Paper menyebutnya rancangan yang dibekukan sebelum analisis, bukan pra-registrasi | f04dbd3 |
 | 2026-11-10 | Urutan baris `load_frame` berbeda antarproses, sehingga skor model sedikit berubah saat dijalankan ulang | Polars tidak menjamin urutan hasil `unique` dan `join`; ditemukan setelah holdout dibuka | Angka konfirmatori tetap dari satu run nb15. Run ulang eksploratif memberi AP `M_behav` 5-19 F3 0,255 sampai 0,260 dan selisih AURT H4a 0,044, dibanding 0,058 pada nb15. Perbaikan berupa pengurutan di `load_frame` belum diterapkan supaya kode sama dengan yang menghasilkan angka | dde2836 |
 | 2026-11-10 | Riwayat git ditulis ulang untuk membersihkan metadata commit sebelum push | Permintaan pengguna | Isi tiap commit, author, dan waktu tidak berubah. Hash di `results/run_log.jsonl`, `results/holdout_opened.json`, keluaran notebook, dan baris di atas adalah hash lama, lihat peta di bawah | setelah fa65455 |
+| 2026-11-10 | Anotasi awal audit manual dikerjakan satu instance Claude yang tidak melihat skor, label, atau hasil, lalu divalidasi manusia | Permintaan pengguna, karena dua anotator manusia tidak tersedia | Paper harus menyebutnya anotasi LLM dengan validasi manusia. Nilai κ adalah kesepakatan LLM dan manusia, bukan antar dua manusia | setelah 53ac753 |
 
 ## Peta hash setelah penulisan ulang riwayat
 

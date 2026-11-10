@@ -81,7 +81,7 @@ Anotator menilai aktivitas yang terlihat, bukan niat. Jangan membuka profil GitH
 
 Dua anotator mengisi secara independen. Fraksi akun yang dianotasi ganda diatur `double_annotation_fraction`. Hitung Cohen's κ. Jika κ < `min_kappa`, perbaiki pedoman dan ulangi pada sampel baru (seed + 1, dicatat). Pengguna mengadjudikasi ketidaksepakatan.
 
-Claude Code tidak boleh mengisi kolom anotasi.
+Claude Code tidak boleh mengisi kolom anotasi manusia. Sejak 2026-11-10, anotasi awal dikerjakan instance Claude di file terpisah dan divalidasi manusia, lihat `docs/DEVIATIONS.md`.
 
 ### Pelaporan
 
