@@ -10,5 +10,11 @@
     "decision": "lanjut",
     "rationale": "Pipeline mereproduksi angka pilot pada jam dev: kelima baris AP berada dalam toleransi 0,03 (tab_dev_replication), dan label jam dev sama persis dengan pilot (519 hilang dari 8.434 akun kohort tetap). Rancangan dibekukan pada config/params.yaml dan tag prereg-v1. Tag ini adalah tag git lokal yang dibuat Claude Code atas delegasi pengguna, bukan pendaftaran pada layanan publik, sehingga paper menyebutnya rancangan yang dibekukan sebelum analisis, bukan pra-registrasi. Stratum kunci 5-19 tidak berubah. Jam dev tidak mewakili stratum 20+ (lihat Gerbang A), jadi angka pilot stratum itu bukan ekspektasi.",
     "recorded_at_utc": "2026-11-10T11:35:46+00:00"
+  },
+  "D": {
+    "decided_by": "claude-code (delegasi pengguna 2026-11-10)",
+    "decision": "lanjut",
+    "rationale": "Rancangan dinyatakan final oleh Claude Code atas delegasi pengguna (CLAUDE.md, Delegasi 2026-11-10). nb09 sampai nb14 selesai tanpa assertion gagal dan tanpa memakai w3. Tidak ada lengan degeneratif, dan lebar blok utama 20.000. Bagian locked pada params tidak berubah sejak prereg-v1. Sensitivitas yang disebut docs/06 ditambahkan sebelum holdout dibuka. nb15 lulus uji kering di folder terpisah dengan dua skema label buatan, tanpa membaca label asli, dan nb16 sampai cek privasinya. Uji itu menemukan dan memperbaiki satu crash pada jalur target precision tidak tercapai. Gerbang C belum dilakukan karena membutuhkan dua anotator manusia; audit memakai w2 dan tidak mengubah fitur, parameter, atau ambang (docs/DEVIATIONS.md). Catatan tahap pengembangan: precision tercapai kebijakan adaptif pada F2 adalah 0,41, di bawah target 0,7, dan definisinya tidak diubah. Interval H2b bisa degeneratif karena estimasi CV diperlakukan tetap; ini dilaporkan sebagai batasan.",
+    "recorded_at_utc": "2026-11-10T12:16:48+00:00"
   }
 }
