@@ -4,7 +4,7 @@ import pytest
 
 from ghremoval.audit import cohen_kappa, draw_sample
 from ghremoval.models.fit import time_holdback
-from ghremoval.policy import aurt, first_cross, fixed_times, policy_metrics, q_grid, select_fixed, select_q_kappa, thresholds
+from ghremoval.policy import aurt, first_cross, fixed_times, matched_precision, policy_metrics, q_grid, select_fixed, select_q_kappa, thresholds
 from ghremoval.pu import elkan_noto_fit, hide_positives, pu_bagging_fit, bagging_score, sar_em_fit, naive_fit
 
 
@@ -43,6 +43,19 @@ def test_select_fixed_finds_smallest_valid_threshold():
     y = np.array([1, 1, 0])
     assert select_fixed(np.array([0.9, 0.8, 0.3]), y, 0.9, np.array([0.1, 0.5, 0.85])) == 0.5
     assert policy_metrics(np.array([5.0, np.inf, np.inf]), y, 75)["n_flagged"] == 1
+
+
+def test_matched_precision_takes_best_aurt_for_each_policy():
+    y = np.array([1, 1, 0, 0])
+    prob = {5: np.array([0.9, 0.2, 0.1, 0.1]), 60: np.array([0.9, 0.8, 0.1, 0.1])}
+    rows = {r["policy"]: r for r in matched_precision(prob, y, 0.0, [0.9], np.array([0.5]), 75)}
+    assert rows["adaptive"]["aurt"] == pytest.approx(85 / 150)
+    assert rows["best_fixed"]["window"] == 5 and rows["best_fixed"]["aurt"] == pytest.approx(70 / 150)
+
+
+def test_matched_precision_reports_unreachable_level():
+    rows = matched_precision({5: np.array([0.4, 0.9])}, np.array([1, 0]), 0.0, [0.9], np.array([0.5]), 75)
+    assert {r["status"] for r in rows} == {"precision tidak tercapai"}
 
 
 def test_time_holdback_takes_last_hours():

@@ -1,5 +1,7 @@
 {
   "n_accounts_study": 847681,
   "n_events_study": 5019698,
-  "n_fixed_cohort": 159209
+  "n_fixed_cohort": 159209,
+  "primary_id_block_width": 20000,
+  "ratio_h2a": 1.1759642207634509
 }

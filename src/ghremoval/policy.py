@@ -87,6 +87,26 @@ def fixed_times(prob: np.ndarray, q: float | None, checkpoint: int) -> np.ndarra
     return times
 
 
+def matched_precision(prob: dict[int, np.ndarray], y: np.ndarray, kappa: float, levels: list[float], grid: np.ndarray, horizon: float) -> list[dict]:
+    """AURT terbaik tiap kebijakan pada precision teramati minimal `level`.
+
+    Analisis sensitivitas: q dipilih memakai label evaluasi untuk kedua kebijakan, jadi nilainya bukan kinerja yang bisa dicapai saat dipakai.
+    """
+    checkpoints = sorted(prob)
+    adaptive = [(None, float(q), policy_metrics(first_cross(prob, thresholds(float(q), kappa, checkpoints)), y, horizon)) for q in grid]
+    fixed = [(c, float(q), policy_metrics(fixed_times(prob[c], float(q), c), y, horizon)) for c in checkpoints for q in grid]
+    rows = []
+    for level in levels:
+        for name, candidates in (("adaptive", adaptive), ("best_fixed", fixed)):
+            valid = [item for item in candidates if item[2]["n_flagged"] and item[2]["precision"] >= level]
+            if not valid:
+                rows.append({"level": level, "policy": name, "status": "precision tidak tercapai"})
+                continue
+            window, q, metrics = max(valid, key=lambda item: item[2]["aurt"])
+            rows.append({"level": level, "policy": name, "status": "ok", "window": window, "q": q, **metrics})
+    return rows
+
+
 def amoc_curve(prob: dict[int, np.ndarray], y: np.ndarray, kappa: float, grid: np.ndarray, horizon: float) -> list[dict]:
     """Rata-rata waktu penandaan pada positif terhadap false positive rate, untuk tiap q."""
     checkpoints, negatives, out = sorted(prob), max(int((y == 0).sum()), 1), []

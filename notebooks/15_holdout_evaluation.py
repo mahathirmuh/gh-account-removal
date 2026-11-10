@@ -27,7 +27,7 @@ from datetime import UTC, datetime
 import numpy as np
 import pandas as pd
 
-from ghremoval.analysis import FORWARD_ARMS, aurt_delta_bootstrap, block_width, bootstrap_gain, cells_of, checkpoint_scores, coordination_ladder, du_name_baselines, ladder, latency_table, pilot_scores, policy_results, score_row
+from ghremoval.analysis import FORWARD_ARMS, aurt_delta_bootstrap, block_width, bootstrap_gain, cells_of, checkpoint_scores, coordination_ladder, du_name_baselines, f3_sensitivity, ladder, latency_table, pilot_scores, policy_results, policy_sensitivity, rates_by_week, score_row
 from ghremoval.config import load_context
 from ghremoval.evaluate import holm, paired_cluster_bootstrap, within_cell_auc
 from ghremoval.gates import gate_passed
@@ -161,7 +161,7 @@ save_table(policy_final, "tab_policy_final", "Early-flagging policy on holdout (
 h4a = comparisons["fixed|F3_forward_batch_excluded"]
 (ctx.paths.results / "policy_final.json").write_text(json.dumps(comparisons, indent=2, default=float) + "\n")
 print("H4a:", h4a)
-policy_final[(policy_final.target == primary) & (policy_final.cohort == "fixed") & (policy_final.arm == "F3_forward_batch_excluded")][["model", "policy", "status", "n_flagged", "precision", "recall", "aurt", "median_time_tp"]]
+policy_final[(policy_final.target == primary) & (policy_final.cohort == "fixed") & (policy_final.arm == "F3_forward_batch_excluded")].reindex(columns=["model", "policy", "status", "n_flagged", "precision", "recall", "aurt", "median_time_tp"])
 
 # %% [markdown]
 # ## 5. RQ5: fitur koordinasi
@@ -171,6 +171,23 @@ coordination = coordination_ladder(ctx, "final", best)
 save_table(pd.DataFrame(coordination["rows"]), "tab_coord_ablation_final", "Coordination ablation on holdout (observed label)")
 h5 = bootstrap_gain(ctx, coordination["data"], coordination["scores"]["M_coord"], coordination["scores"]["M_behav"], "F3_forward_batch_excluded", "5-19")
 print("H5:", h5)
+
+# %% [markdown]
+# ## 5b. Sensitivitas
+#
+# Semua bagian ini eksploratif dan tidak mengubah keputusan hipotesis.
+# Pada perbandingan precision yang disamakan, `q` dipilih memakai label holdout untuk kedua kebijakan, jadi hasilnya bukan kinerja yang bisa dicapai saat dipakai.
+
+# %%
+policy_sens = pd.DataFrame([{"cohort": cohort, "arm": arm, **row} for (cohort, arm), (out, behav_out) in keep.items() for row in policy_sensitivity(ctx, behav_out, out, primary)])
+save_table(policy_sens, "tab_policy_sensitivity_final", "Policy sensitivity on holdout: other horizons and matched observed precision (exploratory, observed label)")
+f3_sens = pd.DataFrame(f3_sensitivity(ctx, data, {name: scores[name] for name in ("B2_xgb", "M_behav_xgb")}))
+save_table(f3_sens, "tab_f3_sensitivity_final", "Forward arm excluding ID blocks with any training account (exploratory, observed label)")
+followup = pd.DataFrame(rates_by_week(data))
+save_table(followup, "tab_followup_by_week_final", "Observed disappearance rate by week and stratum (observed label)")
+print(policy_sens.to_string())
+print(f3_sens.to_string())
+print(followup.to_string())
 
 # %% [markdown]
 # ## 6. Keputusan dengan koreksi Holm

@@ -1,0 +1,64 @@
+{
+  "effective_delta": 0.01,
+  "seed_ap": [
+    0.18487734439071513,
+    0.18333847433760694,
+    0.18150240874000942
+  ],
+  "decisions": {
+    "M_behav_xgb - B2_xgb | F2_forward_new_accounts": {
+      "delta": 0.1127999207725534,
+      "low": 0.07036951126352639,
+      "high": 0.15543581462240072,
+      "p_one_sided": 0.0,
+      "n_reps": 2000,
+      "n_clusters_with_pos": 364,
+      "delta_without_largest_cluster": 0.1063122754960216
+    },
+    "M_behav_xgb - B2_xgb | F3_forward_batch_excluded": {
+      "delta": 0.0870248562685807,
+      "low": 0.04024513799192183,
+      "high": 0.13615512818860886,
+      "p_one_sided": 0.0,
+      "n_reps": 2000,
+      "n_clusters_with_pos": 276,
+      "delta_without_largest_cluster": 0.07757544119389508
+    },
+    "M_behav_mlp - M_behav_xgb | F2_forward_new_accounts": {
+      "delta": -0.0005852301857438846,
+      "low": -0.01747768113468152,
+      "high": 0.01842268476838549,
+      "p_one_sided": 0.4915,
+      "n_reps": 2000,
+      "n_clusters_with_pos": 364,
+      "delta_without_largest_cluster": -0.0013761226180878383
+    },
+    "M_behav_mlp - M_behav_xgb | F3_forward_batch_excluded": {
+      "delta": 0.0143923655813534,
+      "low": -0.0008010772821870792,
+      "high": 0.029771119944155513,
+      "p_one_sided": 0.0305,
+      "n_reps": 2000,
+      "n_clusters_with_pos": 276,
+      "delta_without_largest_cluster": 0.013634424958545305
+    },
+    "M_behav_lr - M_behav_xgb | F2_forward_new_accounts": {
+      "delta": -0.044350885166842685,
+      "low": -0.0847647381134974,
+      "high": -0.0018292750585286377,
+      "p_one_sided": 0.9775,
+      "n_reps": 2000,
+      "n_clusters_with_pos": 364,
+      "delta_without_largest_cluster": -0.0402665510883852
+    },
+    "M_behav_lr - M_behav_xgb | F3_forward_batch_excluded": {
+      "delta": -0.06132540214315578,
+      "low": -0.10411163283039955,
+      "high": -0.019667262635734314,
+      "p_one_sided": 1.0,
+      "n_reps": 2000,
+      "n_clusters_with_pos": 276,
+      "delta_without_largest_cluster": -0.05537593593439588
+    }
+  }
+}

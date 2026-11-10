@@ -85,7 +85,7 @@ locked:
 
 # Prosedurnya dikunci di docs/06; nilainya diisi sekali oleh nb09 dari data train+val, sebelum holdout dibuka.
 derived:
-  primary_id_block_width:
+  primary_id_block_width: 20000
 
 reporting:
   figure_dpi: 300

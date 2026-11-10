@@ -9,3 +9,10 @@
 {"notebook": "04_label_snapshot_s1", "finished_at_utc": "2026-11-10T09:56:17+00:00", "git_commit": "abfcd4a", "duration_seconds": 683.7, "counts": {"n_accounts": 885634, "n_error": 0}}
 {"notebook": "05_label_validation", "finished_at_utc": "2026-11-10T10:57:06+00:00", "git_commit": "abfcd4a", "duration_seconds": 3645.8, "counts": {"n_accounts": 528822, "n_gone": 11086}}
 {"notebook": "08_dev_hour_replication", "finished_at_utc": "2026-11-10T11:31:48+00:00", "git_commit": "abfcd4a", "duration_seconds": 20.0, "counts": {"n_rows": 8434, "n_gone": 519}}
+{"notebook": "09_split_audit", "finished_at_utc": "2026-11-10T11:39:23+00:00", "git_commit": "f04dbd3", "duration_seconds": 211.2, "counts": {"n_rows": 77534, "n_pos": 2232}}
+{"notebook": "10_models_and_controls", "finished_at_utc": "2026-11-10T11:55:53+00:00", "git_commit": "f04dbd3", "duration_seconds": 739.4, "counts": {"n_train": 55439, "n_test": 22095}}
+{"notebook": "11_pu_analysis", "finished_at_utc": "2026-11-10T11:57:43+00:00", "git_commit": "f04dbd3", "duration_seconds": 105.4, "counts": {"n_train": 55439}}
+{"notebook": "12_latency_and_adaptive_policy", "finished_at_utc": "2026-11-10T11:59:02+00:00", "git_commit": "f04dbd3", "duration_seconds": 75.2, "counts": {"n_settings": 4}}
+{"notebook": "13_coordination_ablation", "finished_at_utc": "2026-11-10T12:00:40+00:00", "git_commit": "f04dbd3", "duration_seconds": 94.2, "counts": {"n_test": 22095}}
+{"notebook": "14_manual_audit_sample", "finished_at_utc": "2026-11-10T12:01:05+00:00", "git_commit": "f04dbd3", "duration_seconds": 22.5, "counts": {"mode": "sample"}}
+{"notebook": "12_latency_and_adaptive_policy", "finished_at_utc": "2026-11-10T12:08:41+00:00", "git_commit": "f04dbd3", "duration_seconds": 115.0, "counts": {"n_settings": 4}}

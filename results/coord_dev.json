@@ -1,0 +1,56 @@
+{
+  "M_proxy - M_behav | F2_forward_new_accounts": {
+    "delta": 0.005789358614440826,
+    "low": -0.017201924772412613,
+    "high": 0.03189582094181288,
+    "p_one_sided": 0.36,
+    "n_reps": 2000,
+    "n_clusters_with_pos": 364,
+    "delta_without_largest_cluster": 0.010233542735601259
+  },
+  "M_proxy - M_behav | F3_forward_batch_excluded": {
+    "delta": -0.0064026708146396605,
+    "low": -0.02230181775697696,
+    "high": 0.007562214718850127,
+    "p_one_sided": 0.8095,
+    "n_reps": 2000,
+    "n_clusters_with_pos": 276,
+    "delta_without_largest_cluster": -0.0017657564697824424
+  },
+  "M_coord - M_behav | F2_forward_new_accounts": {
+    "delta": -0.0073366578501929125,
+    "low": -0.0350989133374582,
+    "high": 0.027692039132783838,
+    "p_one_sided": 0.6585,
+    "n_reps": 2000,
+    "n_clusters_with_pos": 364,
+    "delta_without_largest_cluster": 0.0038124929082048176
+  },
+  "M_coord - M_behav | F3_forward_batch_excluded": {
+    "delta": -0.011799378886524242,
+    "low": -0.03468587879950933,
+    "high": 0.012196797154584405,
+    "p_one_sided": 0.788,
+    "n_reps": 2000,
+    "n_clusters_with_pos": 276,
+    "delta_without_largest_cluster": 0.0006529098105812481
+  },
+  "M_coord - M_proxy | F2_forward_new_accounts": {
+    "delta": -0.013126016464633739,
+    "low": -0.02597599197092179,
+    "high": 0.006107924954763298,
+    "p_one_sided": 0.9095,
+    "n_reps": 2000,
+    "n_clusters_with_pos": 364,
+    "delta_without_largest_cluster": -0.006421049827396441
+  },
+  "M_coord - M_proxy | F3_forward_batch_excluded": {
+    "delta": -0.005396708071884582,
+    "low": -0.019605468718489415,
+    "high": 0.014658924149146602,
+    "p_one_sided": 0.6745,
+    "n_reps": 2000,
+    "n_clusters_with_pos": 276,
+    "delta_without_largest_cluster": 0.0024186662803636905
+  }
+}

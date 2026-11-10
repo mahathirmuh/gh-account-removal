@@ -17,6 +17,9 @@ Versi holdout dari nb15 memakai akhiran `_final`, misalnya `tab_policy_final`. F
 | `tab_tuning_trials` | Search space, trial, waktu, device | nb10 |
 | `tab_pu_methods` | Metode PU, prior, uji semi-sintetis | nb11 |
 | `tab_policy` | Precision, recall, AURT, median waktu per kebijakan | nb12, nb15 |
+| `tab_policy_sensitivity` | Horizon lain dan precision teramati yang disamakan, eksploratif | nb12, nb15 |
+| `tab_f3_sensitivity_final` | Lengan F3 tanpa blok ID berisi akun train apa pun, eksploratif | nb15 |
+| `tab_followup_by_week_final` | Tingkat hilang per minggu dan stratum | nb15 |
 | `tab_coord_ablation` | `M_behav`, `M_proxy`, `M_coord` | nb13, nb15 |
 | `tab_audit_results` | Kategori audit per kelompok, κ | nb14 |
 | `tab_holdout_summary` | Keputusan H1a–H5 | nb15 |

@@ -11,8 +11,8 @@ from ghremoval.data import FEATURE_SETS, xy
 from ghremoval.evaluate import ap_by_stratum, delta_ap_metric, paired_cluster_bootstrap, precision_at_k, recall_at_k, within_cell_auc
 from ghremoval.models.fit import XGB_FIXED_SHALLOW, StageData, arm_mask, fit_predict, fit_xgb, load_stage, predict, time_holdback
 from ghremoval.models.pilot import pilot_model
-from ghremoval.policy import Calibrator, NOT_FLAGGED, amoc_curve, aurt, first_cross, fixed_times, policy_metrics, q_grid, select_fixed, select_q_kappa, thresholds
-from ghremoval.splits import id_block_groups
+from ghremoval.policy import Calibrator, NOT_FLAGGED, amoc_curve, aurt, first_cross, fixed_times, matched_precision, policy_metrics, q_grid, select_fixed, select_q_kappa, thresholds
+from ghremoval.splits import forward_arm, id_block_groups
 
 FORWARD_ARMS = ["F1_forward", "F2_forward_new_accounts", "F3_forward_batch_excluded"]
 REPORT_STRATA = ["all", "5-19", "20+"]
@@ -216,6 +216,40 @@ def aurt_delta_bootstrap(ctx: Context, scores: dict, times_a: np.ndarray, times_
 
     observed = metric(np.arange(len(y)))
     return {"delta": float(observed), **paired_cluster_bootstrap(metric, clusters, reps or ctx.p.locked["decision"]["bootstrap_reps"], ctx.p.project["seed"])}
+
+
+def policy_sensitivity(ctx: Context, scores: dict, out: dict, target: float) -> list[dict]:
+    """Sensitivitas kebijakan (docs/06): horizon lain dan precision teramati yang disamakan. Eksploratif."""
+    cfg = ctx.p.locked["policy"]
+    chosen = next((r for r in out["rows"] if r["policy"] == "adaptive" and r["target"] == target and r["status"] == "ok"), None)
+    if chosen is None or ("best_fixed", target) not in out["times"]:
+        return [{"analysis": "all", "target": target, "status": "target precision tidak tercapai pada kalibrasi"}]
+    mask, y = out["mask"], scores["test_y"][out["mask"]]
+    adaptive, fixed = out["times"][("adaptive", target)][mask], out["times"][("best_fixed", target)][mask]
+    rows = []
+    for horizon in cfg["aurt_horizon_sensitivity"]:
+        a, b = aurt(adaptive, y, horizon), aurt(fixed, y, horizon)
+        rows.append({"analysis": "horizon", "target": target, "status": "ok", "horizon": horizon, "aurt_adaptive": a, "aurt_best_fixed": b, "delta": a - b})
+    prob = {c: values[mask] for c, values in scores["test_prob"].items()}
+    matched = matched_precision(prob, y, chosen["kappa"], cfg["target_precisions"], q_grid(cfg["q_grid_size"]), cfg["aurt_horizon_minutes"])
+    return rows + [{"analysis": "matched_precision", "target": target, **row} for row in matched]
+
+
+def f3_sensitivity(ctx: Context, data: StageData, scores: dict[str, np.ndarray]) -> list[dict]:
+    """Lengan F3 yang mengecualikan blok ID berisi akun train apa pun, yaitu bagian test yang tidak bertetangga dengan train (docs/06)."""
+    arm = "F3_train_any_block"
+    mask = forward_arm(data.train, data.test, "F3_forward_batch_excluded", block_width(ctx), "train_any_block")
+    if not mask.any():
+        return [{"arm": arm, "model": name, "n": 0, "n_pos": 0} for name in scores]
+    y, strata = data.test["is_gone"].to_numpy().astype(int), data.test["stratum"].to_numpy()
+    return [{"arm": arm, "model": name, **score_row(y, score, strata, mask)} for name, score in scores.items()]
+
+
+def rates_by_week(data: StageData) -> list[dict]:
+    """Tingkat hilang per minggu dan stratum, untuk sensitivitas selisih masa tunggu (docs/01)."""
+    columns = ["week", "stratum", "is_gone"]
+    frame = pl.concat([data.train.select(columns), data.test.select(columns)])
+    return frame.group_by("week", "stratum").agg(pl.len().alias("n"), pl.col("is_gone").sum().alias("n_gone"), pl.col("is_gone").mean().alias("rate")).sort("week", "stratum").to_dicts()
 
 
 def latency_table(ctx: Context, stage: str, best_params: dict) -> list[dict]:

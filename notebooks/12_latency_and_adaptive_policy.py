@@ -26,7 +26,7 @@ import json
 import numpy as np
 import pandas as pd
 
-from ghremoval.analysis import aurt_delta_bootstrap, checkpoint_scores, latency_table, policy_results
+from ghremoval.analysis import aurt_delta_bootstrap, checkpoint_scores, latency_table, policy_results, policy_sensitivity
 from ghremoval.config import load_context
 from ghremoval.models.fit import load_stage
 from ghremoval.policy import amoc_curve, first_cross, q_grid, thresholds
@@ -96,6 +96,17 @@ for (cohort, arm), (adaptive, _baseline) in results.items():
 comparison_table = pd.DataFrame(comparisons).T.reset_index(names="setting")
 (ctx.paths.results / "policy_dev.json").write_text(json.dumps(comparisons, indent=2, default=float) + "\n")
 comparison_table
+
+# %% [markdown]
+# ## 3b. Sensitivitas
+#
+# Horizon lain dan perbandingan pada precision teramati yang disamakan. Precision yang tercapai bisa berbeda antarkebijakan walaupun targetnya sama.
+# Pada perbandingan yang disamakan, `q` dipilih memakai label evaluasi untuk kedua kebijakan, jadi hasilnya bukan kinerja yang bisa dicapai saat dipakai.
+
+# %%
+sensitivity = pd.DataFrame([{"cohort": cohort, "arm": arm, **row} for (cohort, arm), (adaptive, _baseline) in results.items() for row in policy_sensitivity(ctx, scores_keep[cohort], adaptive, primary)])
+save_table(sensitivity, "tab_policy_sensitivity", "Policy sensitivity, development stage: other horizons and matched observed precision (exploratory, observed label)")
+sensitivity
 
 # %% [markdown]
 # ## 4. Kurva recall terhadap waktu dan AMOC

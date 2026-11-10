@@ -1,0 +1,19 @@
+\begin{table}
+\caption{Hyperparameter search: best value per family and sampler seed}
+\label{tab:tab_tuning_trials}
+\begin{tabular}{lrrrrl}
+\toprule
+family & sampler\_seed & best\_value & n\_trials & seconds & best\_params \\
+\midrule
+xgb & 42 & 0.1765 & 24 & 13.7463 & \{"max\_depth": 5, "learning\_rate": 0.0386200575578942, "min\_child\_weight": 3.8332636841586107, "subsample": 0.7241592641656258, "colsample\_bytree": 0.9463253131505632, "reg\_lambda": 0.14035775803571518\} \\
+xgb & 123 & 0.1849 & 24 & 30.6443 & \{"max\_depth": 7, "learning\_rate": 0.010884917829871157, "min\_child\_weight": 1.5107850221210106, "subsample": 0.8537248326694911, "colsample\_bytree": 0.5121334820677617, "reg\_lambda": 3.1360533651999916\} \\
+xgb & 2026 & 0.1810 & 24 & 18.4923 & \{"max\_depth": 7, "learning\_rate": 0.013276641264490378, "min\_child\_weight": 1.362879404884391, "subsample": 0.8588696477785993, "colsample\_bytree": 0.6071507022417812, "reg\_lambda": 0.8272166012656222\} \\
+lr & 42 & 0.1396 & 24 & 27.7658 & \{"C": 9.654691594920259\} \\
+lr & 123 & 0.1396 & 24 & 27.5294 & \{"C": 9.869126105644968\} \\
+lr & 2026 & 0.1396 & 24 & 29.2911 & \{"C": 8.063840196432071\} \\
+mlp & 42 & 0.1922 & 24 & 131.9491 & \{"hidden": 512, "dropout": 0.4664400635451803, "lr": 0.00018209105378957094, "weight\_decay": 0.0006300546151500103, "batch": 256\} \\
+mlp & 123 & 0.1914 & 24 & 158.9241 & \{"hidden": 64, "dropout": 0.35973448489278154, "lr": 0.00042167664250477427, "weight\_decay": 0.008376388146302444, "batch": 256\} \\
+mlp & 2026 & 0.1948 & 24 & 154.0848 & \{"hidden": 512, "dropout": 0.4465933313006412, "lr": 0.0001363564563427132, "weight\_decay": 4.54856461021322e-06, "batch": 256\} \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,33 @@
+cohort,arm,analysis,target,status,horizon,aurt_adaptive,aurt_best_fixed,delta,level,policy,window,q,n_flagged,precision,recall,aurt,median_time_tp
+fixed,F2_forward_new_accounts,horizon,0.7,ok,65.0,0.01978021978021978,0.013736263736263736,0.006043956043956043,,,,,,,,,
+fixed,F2_forward_new_accounts,horizon,0.7,ok,90.0,0.026686507936507935,0.01488095238095238,0.011805555555555555,,,,,,,,,
+fixed,F2_forward_new_accounts,matched_precision,0.7,ok,,,,,0.5,adaptive,,0.67,41.0,0.5121951219512195,0.0375,0.019285714285714285,30.0
+fixed,F2_forward_new_accounts,matched_precision,0.7,ok,,,,,0.5,best_fixed,15.0,0.27,17.0,0.5882352941176471,0.017857142857142856,0.014285714285714285,15.0
+fixed,F2_forward_new_accounts,matched_precision,0.7,ok,,,,,0.7,adaptive,,0.795,11.0,0.8181818181818182,0.01607142857142857,0.012738095238095238,10.0
+fixed,F2_forward_new_accounts,matched_precision,0.7,ok,,,,,0.7,best_fixed,30.0,0.295,14.0,0.7857142857142857,0.019642857142857142,0.011785714285714287,30.0
+fixed,F2_forward_new_accounts,matched_precision,0.7,ok,,,,,0.9,adaptive,,0.9450000000000001,8.0,1.0,0.014285714285714285,0.011666666666666667,10.0
+fixed,F2_forward_new_accounts,matched_precision,0.7,ok,,,,,0.9,best_fixed,10.0,0.67,6.0,1.0,0.010714285714285714,0.009285714285714286,10.0
+fixed,F3_forward_batch_excluded,horizon,0.7,ok,65.0,0.01881966014982642,0.014617211766855473,0.004202448382970948,,,,,,,,,
+fixed,F3_forward_batch_excluded,horizon,0.7,ok,90.0,0.023489047242016364,0.01583531274742676,0.007653734494589604,,,,,,,,,
+fixed,F3_forward_batch_excluded,matched_precision,0.7,ok,,,,,0.5,adaptive,,0.74,26.0,0.5,0.030878859857482184,0.016468725257323832,30.0
+fixed,F3_forward_batch_excluded,matched_precision,0.7,ok,,,,,0.5,best_fixed,15.0,0.27,15.0,0.5333333333333333,0.019002375296912115,0.015201900237529691,15.0
+fixed,F3_forward_batch_excluded,matched_precision,0.7,ok,,,,,0.7,adaptive,,0.795,9.0,0.7777777777777778,0.0166270783847981,0.013460015835312747,10.0
+fixed,F3_forward_batch_excluded,matched_precision,0.7,ok,,,,,0.7,best_fixed,30.0,0.295,11.0,0.7272727272727273,0.019002375296912115,0.01140142517814727,30.0
+fixed,F3_forward_batch_excluded,matched_precision,0.7,ok,,,,,0.9,adaptive,,0.9450000000000001,7.0,1.0,0.0166270783847981,0.013460015835312747,10.0
+fixed,F3_forward_batch_excluded,matched_precision,0.7,ok,,,,,0.9,best_fixed,10.0,0.67,5.0,1.0,0.011876484560570071,0.010292953285827395,10.0
+deployable,F2_forward_new_accounts,horizon,0.7,ok,65.0,0.015592515592515593,0.009416656475480005,0.006175859117035588,,,,,,,,,
+deployable,F2_forward_new_accounts,horizon,0.7,ok,90.0,0.024509803921568627,0.011658717541070483,0.012851086380498145,,,,,,,,,
+deployable,F2_forward_new_accounts,matched_precision,0.7,ok,,,,,0.5,adaptive,,0.535,117.0,0.5128205128205128,0.04769475357710652,0.01987281399046105,60.0
+deployable,F2_forward_new_accounts,matched_precision,0.7,ok,,,,,0.5,best_fixed,30.0,0.55,41.0,0.5365853658536586,0.017488076311605722,0.010492845786963434,30.0
+deployable,F2_forward_new_accounts,matched_precision,0.7,ok,,,,,0.7,adaptive,,0.8250000000000001,15.0,0.8,0.009538950715421303,0.006412294647588765,30.0
+deployable,F2_forward_new_accounts,matched_precision,0.7,ok,,,,,0.7,best_fixed,15.0,0.35000000000000003,17.0,0.7058823529411765,0.009538950715421303,0.007631160572337043,15.0
+deployable,F2_forward_new_accounts,matched_precision,0.7,precision tidak tercapai,,,,,0.9,adaptive,,,,,,,
+deployable,F2_forward_new_accounts,matched_precision,0.7,ok,,,,,0.9,best_fixed,30.0,0.885,4.0,1.0,0.003179650238473768,0.0019077901430842607,30.0
+deployable,F3_forward_batch_excluded,horizon,0.7,ok,65.0,0.017666543982333457,0.010305483989694516,0.007361059992638941,,,,,,,,,
+deployable,F3_forward_batch_excluded,horizon,0.7,ok,90.0,0.027046783625730993,0.012759170653907496,0.014287612971823497,,,,,,,,,
+deployable,F3_forward_batch_excluded,matched_precision,0.7,ok,,,,,0.5,adaptive,,0.47000000000000003,93.0,0.5053763440860215,0.056220095693779906,0.0240829346092504,60.0
+deployable,F3_forward_batch_excluded,matched_precision,0.7,ok,,,,,0.5,best_fixed,15.0,0.265,24.0,0.5416666666666666,0.01555023923444976,0.012440191387559809,15.0
+deployable,F3_forward_batch_excluded,matched_precision,0.7,ok,,,,,0.7,adaptive,,0.8250000000000001,11.0,0.7272727272727273,0.009569377990430622,0.006778309409888357,30.0
+deployable,F3_forward_batch_excluded,matched_precision,0.7,ok,,,,,0.7,best_fixed,5.0,0.29000000000000004,11.0,0.7272727272727273,0.009569377990430622,0.008931419457735247,5.0
+deployable,F3_forward_batch_excluded,matched_precision,0.7,precision tidak tercapai,,,,,0.9,adaptive,,,,,,,
+deployable,F3_forward_batch_excluded,matched_precision,0.7,ok,,,,,0.9,best_fixed,30.0,0.885,4.0,1.0,0.004784688995215311,0.0028708133971291866,30.0

@@ -1,0 +1,16 @@
+\begin{table}
+\caption{Coordination feature ablation, development stage (observed label)}
+\label{tab:tab_coord_ablation}
+\begin{tabular}{llrrrrrrrrrrrrrrr}
+\toprule
+model & arm & ap\_all & ap\_5-19 & ap\_20+ & base\_all & base\_5-19 & base\_20+ & n & n\_pos & p\_at\_50 & r\_at\_50 & p\_at\_100 & r\_at\_100 & p\_at\_500 & r\_at\_500 & n\_pos\_in\_blocks \\
+\midrule
+M\_behav & F2\_forward\_new\_accounts & 0.2038 & 0.1841 & 0.4297 & 0.0253 & 0.0242 & 0.0536 & 22095 & 560 & 0.6400 & 0.0571 & 0.5300 & 0.0946 & 0.2580 & 0.2304 & 554 \\
+M\_proxy & F2\_forward\_new\_accounts & 0.2146 & 0.1899 & 0.4524 & 0.0253 & 0.0242 & 0.0536 & 22095 & 560 & 0.6400 & 0.0571 & 0.5700 & 0.1018 & 0.2740 & 0.2446 & 554 \\
+M\_coord & F2\_forward\_new\_accounts & 0.2000 & 0.1768 & 0.4218 & 0.0253 & 0.0242 & 0.0536 & 22095 & 560 & 0.5800 & 0.0518 & 0.6000 & 0.1071 & 0.2840 & 0.2536 & 554 \\
+M\_behav & F3\_forward\_batch\_excluded & 0.1687 & 0.1523 & 0.3407 & 0.0220 & 0.0210 & 0.0487 & 19102 & 421 & 0.5600 & 0.0665 & 0.4700 & 0.1116 & 0.1820 & 0.2162 & 416 \\
+M\_proxy & F3\_forward\_batch\_excluded & 0.1671 & 0.1459 & 0.3859 & 0.0220 & 0.0210 & 0.0487 & 19102 & 421 & 0.5400 & 0.0641 & 0.4500 & 0.1069 & 0.1960 & 0.2328 & 416 \\
+M\_coord & F3\_forward\_batch\_excluded & 0.1604 & 0.1405 & 0.3568 & 0.0220 & 0.0210 & 0.0487 & 19102 & 421 & 0.5400 & 0.0641 & 0.4600 & 0.1093 & 0.1940 & 0.2304 & 416 \\
+\bottomrule
+\end{tabular}
+\end{table}
