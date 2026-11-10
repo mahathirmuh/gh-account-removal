@@ -83,6 +83,10 @@ Dua anotator mengisi secara independen. Fraksi akun yang dianotasi ganda diatur 
 
 Claude Code tidak boleh mengisi kolom anotasi manusia. Sejak 2026-11-10, anotasi awal dikerjakan instance Claude di file terpisah dan divalidasi manusia, lihat `docs/DEVIATIONS.md`.
 
+### Validasi manusia (sejak 2026-11-10)
+
+Anotasi awal berada di `audit_annotator_LLM.csv`. `make nb NB=14 MODE=validation` memilih akun untuk divalidasi, yaitu sampel acak sebesar `double_annotation_fraction` untuk κ, ditambah label `promotion_or_spam`, `bulk_automation`, dan keyakinan rendah. Validator menilai tanpa melihat label LLM dan mengisi `audit_validation_human.csv`. `make nb NB=14 MODE=adjudicate` membuat `audit_adjudication.csv`, lalu pengguna memutuskan baris berstatus `berbeda`. `make nb NB=14 MODE=evaluate` menghitung κ pada sampel acak saja.
+
 ### Pelaporan
 
 Porsi tiap kategori per `score_group` dan per status `s`, dengan interval Wilson. Precision terhadap label teramati hanya batas bawah bila positif benar-benar positif, dan batas itu bisa gagal karena penghapusan sukarela.

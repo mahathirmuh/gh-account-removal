@@ -34,7 +34,7 @@ label:
 annotation:
   audit_sample_top: 100
   audit_sample_low: 100
-  double_annotation_fraction: 1.0  # minimum 0.2
+  double_annotation_fraction: 0.2  # minimum 0.2
   min_kappa: 0.60
 
 web_crosscheck:

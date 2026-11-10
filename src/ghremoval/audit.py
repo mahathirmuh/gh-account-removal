@@ -1,4 +1,4 @@
-"""Sampel audit manual (docs/04). Kolom anotasi tidak pernah diisi oleh kode."""
+"""Sampel audit manual (docs/04). Kolom validasi manusia tidak pernah diisi oleh kode."""
 
 from __future__ import annotations
 
@@ -11,6 +11,49 @@ import polars as pl
 from ghremoval.config import Context
 from ghremoval.ingest.gharchive import iter_events
 from ghremoval.parse.events import pseudo
+
+AUDIT_CATEGORIES = ("promotion_or_spam", "bulk_automation", "ordinary_development", "unclear")
+RARE_CATEGORIES = ("promotion_or_spam", "bulk_automation")
+
+
+def read_annotations(path) -> pl.DataFrame:
+    """Baris anotasi yang sudah terisi."""
+    return pl.read_csv(path, schema_overrides={"category": pl.String, "notes": pl.String}).filter(pl.col("category").is_not_null() & (pl.col("category") != ""))
+
+
+def draw_validation_sample(llm: pl.DataFrame, fraction: float, seed: int) -> pl.DataFrame:
+    """Akun untuk validasi manusia. Sampel acak dipakai untuk κ; label jarang dan keyakinan rendah ditambahkan untuk koreksi."""
+    llm = llm.sort("audit_id")
+    rng = np.random.default_rng(seed)
+    random_ids = rng.choice(llm["audit_id"].to_numpy(), int(np.ceil(llm.height * fraction)), replace=False).tolist()
+    targeted = llm.filter((pl.col("category").is_in(RARE_CATEGORIES) | (pl.col("confidence") == "rendah")) & ~pl.col("audit_id").is_in(random_ids))["audit_id"].to_list()
+    rows = [(i, "random") for i in random_ids] + [(i, "targeted") for i in targeted]
+    return pl.DataFrame([rows[i] for i in rng.permutation(len(rows))], schema={"audit_id": pl.Int64, "validation_set": pl.String}, orient="row")
+
+
+def render_validation_sheet(rows: list[dict], audit_ids: list[int]) -> str:
+    """Ringkasan akun untuk validator, dalam blok kode supaya tautan di dalam teks tidak aktif."""
+    by_id = {row["audit_id"]: row for row in rows}
+    parts = ["# Data validasi\n"]
+    for audit_id in audit_ids:
+        row = by_id[audit_id]
+        lines = ["event_counts: " + ", ".join(f"{k}={v}" for k, v in row["event_counts"].items())]
+        for field in ("repo_names", "commit_messages", "pr_titles"):
+            lines.append(f"{field}:")
+            lines += [f"  - {' '.join(str(value).split())}" for value in row[field]] or ["  (kosong)"]
+        parts.append(f"## audit_id {audit_id}\n\n```text\n" + "\n".join(lines).replace("```", "'''") + "\n```\n")
+    return "\n".join(parts)
+
+
+def build_adjudication(llm: pl.DataFrame, human: pl.DataFrame) -> pl.DataFrame:
+    """File keputusan. `final_category` terisi bila akun tidak divalidasi atau kedua penilaian sama, dan kosong bila berbeda."""
+    joined = llm.select("audit_id", pl.col("category").alias("llm_category")).join(human.select("audit_id", pl.col("category").alias("human_category")), on="audit_id", how="left")
+    same = pl.col("human_category") == pl.col("llm_category")
+    missing = pl.col("human_category").is_null()
+    return joined.with_columns(
+        pl.when(missing | same).then(pl.col("llm_category")).otherwise(pl.lit(None, dtype=pl.String)).alias("final_category"),
+        pl.when(missing).then(pl.lit("llm")).when(same).then(pl.lit("setuju")).otherwise(pl.lit("berbeda")).alias("status"),
+    ).sort("audit_id")
 
 
 def cohen_kappa(a: list[str], b: list[str]) -> float:

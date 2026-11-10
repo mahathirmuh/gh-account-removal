@@ -18,3 +18,4 @@
 {"notebook": "12_latency_and_adaptive_policy", "finished_at_utc": "2026-11-10T12:08:41+00:00", "git_commit": "f04dbd3", "duration_seconds": 115.0, "counts": {"n_settings": 4}}
 {"notebook": "15_holdout_evaluation", "finished_at_utc": "2026-11-10T12:22:38+00:00", "git_commit": "dde2836", "duration_seconds": 346.7, "counts": {"n_test": 32582, "n_pos_test": 785}}
 {"notebook": "16_paper_outputs", "finished_at_utc": "2026-11-10T12:22:41+00:00", "git_commit": "dde2836", "duration_seconds": 0.1, "counts": {"n_outputs": 36}}
+{"notebook": "14_manual_audit_validation", "finished_at_utc": "2026-11-10T14:05:17+00:00", "git_commit": "c4b5699", "duration_seconds": 0.0, "counts": {"mode": "validation"}}

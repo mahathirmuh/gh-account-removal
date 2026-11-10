@@ -1,3 +1,5 @@
+from dataclasses import replace
+
 import polars as pl
 import pytest
 
@@ -39,6 +41,6 @@ def test_client_does_not_expose_token():
 
 def test_load_labels_blocks_holdout():
     ctx = load_context()
-    assert ctx.p.holdout_open is False
+    locked = replace(ctx, params=ctx.params.model_copy(update={"holdout_open": False}))
     with pytest.raises(HoldoutLockedError):
-        load_labels(ctx, "holdout")
+        load_labels(locked, "holdout")

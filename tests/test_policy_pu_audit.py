@@ -2,7 +2,7 @@ import numpy as np
 import polars as pl
 import pytest
 
-from ghremoval.audit import cohen_kappa, draw_sample
+from ghremoval.audit import build_adjudication, cohen_kappa, draw_sample, draw_validation_sample, read_annotations, render_validation_sheet
 from ghremoval.models.fit import time_holdback
 from ghremoval.policy import aurt, first_cross, fixed_times, matched_precision, policy_metrics, q_grid, select_fixed, select_q_kappa, thresholds
 from ghremoval.pu import elkan_noto_fit, hide_positives, pu_bagging_fit, bagging_score, sar_em_fit, naive_fit
@@ -107,6 +107,34 @@ def test_draw_sample_is_deterministic_and_balanced():
     a = draw_sample(frame, score, 10, 10, 3)
     b = draw_sample(frame, score, 10, 10, 3)
     assert a[0].equals(b[0]) and a[1]["score_group"].value_counts().height == 2
+
+
+def test_validation_sample_is_deterministic_and_adds_targeted_cases():
+    llm = pl.DataFrame({"audit_id": list(range(20)), "category": ["unclear"] * 16 + ["bulk_automation", "promotion_or_spam", "ordinary_development", "ordinary_development"], "confidence": ["tinggi"] * 19 + ["rendah"]})
+    drawn = draw_validation_sample(llm, 0.2, 7)
+    assert drawn.equals(draw_validation_sample(llm, 0.2, 7))
+    assert drawn.filter(pl.col("validation_set") == "random").height == 4
+    assert drawn["audit_id"].n_unique() == drawn.height and {16, 17, 19} <= set(drawn["audit_id"].to_list())
+
+
+def test_build_adjudication_leaves_only_disagreements_blank():
+    llm = pl.DataFrame({"audit_id": [1, 2, 3], "category": ["unclear", "bulk_automation", "unclear"]})
+    human = pl.DataFrame({"audit_id": [2, 3], "category": ["bulk_automation", "promotion_or_spam"]})
+    out = build_adjudication(llm, human)
+    assert out["final_category"].to_list() == ["unclear", "bulk_automation", None]
+    assert out["status"].to_list() == ["llm", "setuju", "berbeda"]
+
+
+def test_validation_sheet_marks_empty_fields_and_neutralises_code_fences():
+    rows = [{"audit_id": 5, "event_counts": {"PushEvent": 2}, "repo_names": ["a"], "commit_messages": ["x ``` y"], "pr_titles": []}]
+    text = render_validation_sheet(rows, [5])
+    assert "## audit_id 5" in text and "(kosong)" in text and text.count("```") == 2
+
+
+def test_read_annotations_drops_blank_rows(tmp_path):
+    path = tmp_path / "a.csv"
+    path.write_text('audit_id,category,notes\n1,unclear,\n2,"",""\n', encoding="utf8")
+    assert read_annotations(path)["audit_id"].to_list() == [1]
 
 
 def test_elkan_noto_and_hiding_use_independent_random_streams():
