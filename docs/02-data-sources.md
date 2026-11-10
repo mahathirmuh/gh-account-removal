@@ -85,8 +85,8 @@ nb05 mengirim HEAD ke `https://github.com/{login}` pada sampel kecil untuk cek s
 
 | Alat | Cara memperoleh | Catatan |
 | --- | --- | --- |
-| M-Zoom | `git clone https://github.com/kijungs/mzoom tools/mzoom` | Ada `MZoom-2.0.jar` dan `run_mzoom.sh`; format input di `user_guide.pdf`; lisensi di `LICENSE.txt`; README menyebut gratis untuk riset. Jangan di-vendor ke repo |
-| RABBIT-ng | `uv tool install rabbit-ng`, environment terpisah | Mode offline lewat `rabbit_ng.predictor`, menerima daftar event per kontributor. `--min-events` default 5, rentang 1–300. Baseline opsional, batasi waktu |
+| M-Zoom | `tools/mzoom`, diunduh tetapi **tidak dijalankan** | Sistem izin memblokir eksekusi kode yang diunduh dari luar. Pipeline memakai implementasi greedy peeling sendiri di `features/dense_blocks.py` |
+| RABBIT-ng | **Tidak dipasang** | Alasan sama. Baseline ini opsional, jadi dilaporkan sebagai keterbatasan |
 
 ## Lisensi, kebijakan, dan privasi
 

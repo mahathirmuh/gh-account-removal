@@ -91,7 +91,7 @@ dm-git/
 - Model: `scikit-learn`, `xgboost`, `torch` (MLP, GPU RTX 5090 tersedia), `optuna`, `mlflow`, `scipy`.
 - Notebook: `jupyter`, `ipykernel`, `jupytext` (format `py:percent`) sebagai sumber, `.ipynb` dihasilkan, dieksekusi dengan `papermill`.
 - Visualisasi: `matplotlib` dengan satu modul gaya `src/ghremoval/viz.py` (palet ramah buta warna, 300 dpi, simpan PDF dan PNG).
-- Alat eksternal: M-Zoom (`kijungs/mzoom`, ada `MZoom-2.0.jar`, Java 8 JRE sudah ada, `javac` tidak ada) dan RABBIT-ng (`uv tool install rabbit-ng`, environment terpisah).
+- Dense block memakai implementasi greedy peeling di `features/dense_blocks.py`. M-Zoom dan RABBIT-ng tidak dijalankan karena sistem izin memblokir eksekusi kode yang diunduh dari luar.
 
 **Kenapa logika di paket, bukan di notebook:** fungsi bisa diuji dengan pytest, notebook tetap pendek dan mudah direview. Kenapa jupytext: diff `.py` terbaca di git; `.ipynb` hanya artefak.
 

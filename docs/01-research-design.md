@@ -165,11 +165,11 @@ locked:
     max_group_pos_share: 0.25
     batch_exclusion: train_positive_block
   models:
-    optuna_trials: 40
+    optuna_trials: 24
     optuna_sampler_seeds: [42, 123, 2026]
     final_model_seeds: [42, 43, 44]
   dense_blocks:
-    tool: mzoom
+    tool: greedy_peeling
     density: arithmetic
     top_k_blocks: 20
   policy:

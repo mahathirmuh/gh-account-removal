@@ -76,7 +76,6 @@ Isi sebelum Gerbang B, karena memengaruhi parameter yang dikunci:
 - Disk kosong sekitar 40 GB. Raw 24 jam sekitar 2,3 GB terkompresi.
 - RAM 31 GB, CPU 20 core, GPU RTX 5090 untuk MLP.
 - Koneksi ke `data.gharchive.org`, `api.github.com`, `github.com`, `raw.githubusercontent.com`.
-- Java 8 JRE sudah ada untuk M-Zoom.
 
 ## Status bukti saat ini
 

@@ -30,7 +30,7 @@ Fitur jendela 60, `forward_sets`, label scope `train` dan `val`.
 2. Latih `B0`, `B1`, `B2`, `M_behav`, `M_robust` dengan `final_model_seeds`.
 3. Bandingkan XGBoost, LR, dan MLP one-hot, memakai aturan keputusan mata kuliah.
 4. Hitung AP per stratum, Precision@k, Recall@k, AUC dalam sel, dan bootstrap selisih pada lengan F2 dan F3.
-5. Baseline literatur `B3`: batasi waktu. RABBIT-ng dipasang terpisah. Kalau gagal dipasang atau format event tidak cocok, catat sebagai "tidak dijalankan" beserta alasannya. Jangan menghabiskan lebih dari setengah hari pada langkah ini.
+5. Baseline literatur `B3`: interval ala Du et al., signature StarScout, dan heuristik nama. RABBIT-ng tidak dijalankan, catat sebagai keterbatasan.
 
 ## Cek
 

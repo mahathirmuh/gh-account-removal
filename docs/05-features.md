@@ -12,7 +12,7 @@ Semua fitur pada jendela `w` hanya boleh memakai event sebelum `60·w` detik.
 | --- | --- | --- | --- |
 | Tetap | `n_events ≥ fixed_min_events` dalam 60 menit, bukan `[bot]` | Mengukur hilangnya informasi saat jendela dipendekkan | Seleksinya memakai aktivitas masa depan |
 | Deployable | ≥ `deployable_min_events` event dalam `w` menit, bukan `[bot]` | Menjawab pertanyaan operasional | Tanpa informasi masa depan; populasi berbeda per `w` |
-| Strata rendah | `n_events` 1 atau 2–4 dalam 60 menit | Deskriptif, supaya klaim tidak hanya tentang minoritas akun | Hanya pada jendela 60 menit |
+| Strata rendah | `n_events` 1 atau 2–4 dalam 60 menit | Hanya tingkat hilang deskriptif, supaya klaim tidak hanya tentang minoritas akun | Tidak dimodelkan; dicatat sebagai keterbatasan |
 
 Akun `[bot]` dikeluarkan dari semua kohort dan dilaporkan terpisah.
 
@@ -74,7 +74,7 @@ Dihitung atas semua akun yang aktif pada jendela yang sama, tanpa label.
 
 ## Fitur dense-block (K5)
 
-Tensor per jam dan per jendela: mode `actor_id × repo_id × event_type × minute`, nilai = jumlah event. Dibangun hanya dari event sebelum `60·w` detik. Jalankan M-Zoom dengan densitas `dense_blocks.density`, ambil `top_k_blocks` blok.
+Tensor per jam dan per jendela: mode `actor_id × repo_id × event_type × minute`, nilai = jumlah event. Dibangun hanya dari event sebelum `60·w` detik. Blok dicari dengan greedy peeling bergaya M-Zoom yang diimplementasikan di proyek ini (`features/dense_blocks.py`), memakai densitas aritmetika, sebanyak `top_k_blocks` blok.
 
 Per akun: `in_any_block`, `best_block_rank`, `best_block_density`, `best_block_n_accounts`, `best_block_n_repos`, `share_events_in_blocks`, `n_blocks`, dan `n_event_types_in_best_block` (ukuran lintas-event).
 
@@ -84,7 +84,7 @@ Blok dihitung ulang per jam dan per jendela. Label tidak boleh dipakai saat mini
 
 | Baseline | Bentuk |
 | --- | --- |
-| RABBIT-ng offline | Skor dari event dalam jendela, hanya untuk akun ≥ 5 event. BIMBAS dilatih pada histori sampai 300 event, jadi hasil pada jendela pendek adalah pergeseran distribusi; catat ini saat melaporkan |
+| RABBIT-ng offline | **Tidak dijalankan**, karena sistem izin memblokir eksekusi kode yang diunduh dari luar. Catat sebagai keterbatasan |
 | Interval ala Du et al. | Hitungan interval antar-operasi 1, 2, 3 menit dan 1 jam |
 | Signature StarScout | Pola low-activity pada `WatchEvent` |
 | Heuristik nama | `login_len`, `login_digit_ratio`, `login_hyphen_count` |

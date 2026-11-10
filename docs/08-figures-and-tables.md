@@ -1,6 +1,6 @@
 # 08 — Daftar figur dan tabel
 
-Figur lewat `ghremoval.viz.save_figure`, tabel lewat `ghremoval.report.save_table`. Label figur dan tabel dalam bahasa Inggris. Semua luaran tanpa login atau nama repo.
+Versi holdout dari nb15 memakai akhiran `_final`, misalnya `tab_policy_final`. Figur lewat `ghremoval.viz.save_figure`, tabel lewat `ghremoval.report.save_table`. Label figur dan tabel dalam bahasa Inggris. Semua luaran tanpa login atau nama repo.
 
 ## Tabel
 

@@ -8,7 +8,7 @@ Menghasilkan fitur dense-block lintas jenis event untuk RQ5, tanpa label.
 
 ## Input
 
-`events`, M-Zoom di `tools/mzoom`.
+Tabel `events`.
 
 ## Output
 
@@ -16,15 +16,15 @@ Menghasilkan fitur dense-block lintas jenis event untuk RQ5, tanpa label.
 
 ## Modul `src`
 
-- `ghremoval/features/dense_blocks.py`: `build_tensor(events, window_min, path)`, `run_mzoom(tensor_path, k, density)`, `parse_blocks(output_dir)`, `block_features(blocks, events)`.
+- `ghremoval/features/dense_blocks.py`: `build_tensor(events, window_min)`, `peel_blocks(tensor, k)`, `block_features(blocks, tensor, top_k)`, `mine_hour(...)`.
 
 ## Langkah
 
-1. Clone `kijungs/mzoom` ke `tools/mzoom` (di-gitignore). Baca `user_guide.pdf` untuk format input dan argumen, jangan menebak.
-2. Pastikan `MZoom-2.0.jar` berjalan di Java 8 dengan demo bawaan. Kalau gagal, **berhenti dan tanya**. Jangan memasang JDK tanpa izin.
-3. Untuk tiap jam dan `w`, tulis tensor `actor_id × repo_id × event_type × minute`, nilai = jumlah event.
-4. Jalankan M-Zoom dengan `top_k_blocks` blok dan densitas `dense_blocks.density`.
-5. Petakan indeks kembali ke akun, lalu hitung fitur `docs/05`.
+1. Untuk tiap jam dan `w`, bangun tensor `actor_id × repo_id × event_type × minute`, nilai = jumlah event.
+2. Jalankan greedy peeling (implementasi proyek, gaya M-Zoom): buang nilai atribut bermassa slice terkecil, pilih kondisi dengan densitas aritmetika tertinggi, keluarkan tuple blok, ulangi hingga `top_k_blocks` blok.
+3. Hitung fitur `docs/05`.
+
+Implementasi sendiri dipakai karena sistem izin memblokir eksekusi JAR M-Zoom yang diunduh dari luar.
 
 Blok dihitung per jam dan per jendela, sehingga tidak ada event setelah cutoff yang terpakai. Jam `w3` ikut diproses karena tidak memakai label.
 
