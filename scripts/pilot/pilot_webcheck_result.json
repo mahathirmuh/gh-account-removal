@@ -1,0 +1,15 @@
+{
+ "A_api_gone": {
+  "200": 1,
+  "404": 59
+ },
+ "B_api_ok_newest_20plus": {
+  "200": 19
+ },
+ "C_api_ok_newest_under20": {
+  "200": 80
+ },
+ "D_api_ok_older": {
+  "200": 100
+ }
+}

@@ -1,0 +1,16 @@
+# Data dan file besar: tidak pernah masuk git
+/2024-04-01-15.json/
+/data/
+/tools/
+/mlruns/
+/results/optuna/
+
+# Python / tooling
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+dist/
+/build/
