@@ -22,7 +22,7 @@ data:
     w3: ["2024-04-30-3", "2024-04-30-15", "2024-05-02-3", "2024-05-02-15", "2024-05-04-3",
       "2024-05-04-15"]
 
-holdout_open: false
+holdout_open: true
 
 label:
   snapshot_date: '2026-11-10'     # diisi otomatis oleh nb04 saat snapshot pertama, lalu jangan diubah
